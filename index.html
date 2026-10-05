@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>mustShip — разработка цифровых продуктов и AI-автоматизация</title>
-  <meta name="description" content="mustShip — небольшая product engineering команда. Web-сервисы, внутренние инструменты, AI-автоматизация, API и Telegram-интеграции, MVP." />
+  <title>mustShip — разработка продуктов и AI-автоматизация</title>
+  <meta name="description" content="mustShip — небольшая команда разработки цифровых продуктов. Web-сервисы, внутренние инструменты, интеграции, MVP и AI-автоматизация." />
   <meta name="theme-color" content="#0f1115" />
   <style>
     :root {
@@ -15,31 +15,35 @@
       --muted: #aab1bd;
       --line: #2b313d;
       --accent: #b7f34a;
-      --accent-2: #d6ff8a;
+      --accent-soft: #d6ff8a;
       --max: 1120px;
       --radius: 22px;
       --shadow: 0 24px 70px rgba(0,0,0,.28);
     }
+
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
       background:
         radial-gradient(circle at 82% 0%, rgba(183,243,74,.12), transparent 34%),
-        radial-gradient(circle at 8% 32%, rgba(99,102,241,.10), transparent 24%),
+        radial-gradient(circle at 8% 32%, rgba(99,102,241,.08), transparent 24%),
         var(--bg);
       color: var(--text);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.55;
     }
+
     a { color: inherit; }
+    img { display: block; max-width: 100%; }
     .wrap { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; }
+
     header {
       position: sticky;
       top: 0;
       z-index: 10;
       backdrop-filter: blur(16px);
-      background: rgba(15,17,21,.78);
+      background: rgba(15,17,21,.80);
       border-bottom: 1px solid rgba(255,255,255,.06);
     }
     .nav {
@@ -65,8 +69,9 @@
     }
     .navlinks a { text-decoration: none; }
     .navlinks a:hover { color: var(--text); }
+
     .hero {
-      padding: 104px 0 72px;
+      padding: 104px 0 76px;
       display: grid;
       grid-template-columns: 1.12fr .88fr;
       gap: 52px;
@@ -75,12 +80,11 @@
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
       padding: 7px 11px;
       border: 1px solid rgba(183,243,74,.28);
       background: rgba(183,243,74,.07);
       border-radius: 999px;
-      color: var(--accent-2);
+      color: var(--accent-soft);
       font-size: 13px;
       font-weight: 700;
       margin-bottom: 22px;
@@ -92,7 +96,7 @@
       margin: 0 0 26px;
       max-width: 850px;
     }
-    .hero p {
+    .hero-copy {
       color: #c4cad4;
       font-size: clamp(18px, 2vw, 22px);
       max-width: 720px;
@@ -114,6 +118,7 @@
       font-weight: 800;
       font-size: 15px;
       border: 1px solid var(--line);
+      text-align: center;
     }
     .btn-primary {
       background: var(--accent);
@@ -123,32 +128,50 @@
     .btn-primary:hover { background: #c7ff60; }
     .btn-secondary { background: rgba(255,255,255,.03); }
     .btn-secondary:hover { background: rgba(255,255,255,.07); }
-    .terminal {
+
+    .process-panel {
       background: linear-gradient(180deg, #161920, #111319);
       border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow: hidden;
     }
-    .terminal-top {
+    .panel-top {
       display: flex;
       gap: 7px;
       padding: 14px 16px;
       border-bottom: 1px solid var(--line);
     }
     .dot { width: 9px; height: 9px; border-radius: 50%; background: #5d6470; }
-    .terminal-body {
-      padding: 26px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size: 15px;
-      color: #d9dee7;
+    .hero-process {
+      padding: 28px;
+      display: grid;
+      gap: 11px;
     }
-    .terminal-body .green { color: var(--accent); }
-    .terminal-body .dim { color: #7f8896; }
+    .hero-step {
+      padding: 13px 15px;
+      border-radius: 13px;
+      border: 1px solid rgba(255,255,255,.07);
+      background: rgba(255,255,255,.025);
+      font-weight: 750;
+      letter-spacing: -.01em;
+    }
+    .hero-step:last-of-type {
+      border-color: rgba(183,243,74,.28);
+      background: rgba(183,243,74,.07);
+      color: var(--accent-soft);
+    }
+    .down {
+      color: #727b88;
+      text-align: center;
+      font-size: 18px;
+      line-height: 1;
+    }
+
     section { padding: 76px 0; }
     .section-head {
       margin-bottom: 32px;
-      max-width: 780px;
+      max-width: 820px;
     }
     .section-head h2 {
       margin: 0 0 12px;
@@ -160,27 +183,33 @@
       color: var(--muted);
       font-size: 18px;
     }
-    .grid {
+
+    .services-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 16px;
     }
-    .card {
+    .service-card {
       border: 1px solid var(--line);
       background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.018));
       border-radius: var(--radius);
       padding: 28px;
     }
-    .card h3 {
+    .service-card h3 {
       margin: 0 0 10px;
       font-size: 22px;
       letter-spacing: -.025em;
     }
-    .card p { margin: 0; color: var(--muted); }
+    .service-card p { margin: 0; color: var(--muted); }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
     .tag {
       display: inline-flex;
-      margin-top: 18px;
-      margin-right: 7px;
       padding: 6px 9px;
       border-radius: 999px;
       border: 1px solid var(--line);
@@ -188,104 +217,235 @@
       font-size: 12px;
       background: rgba(255,255,255,.025);
     }
-    .projects { display: grid; gap: 14px; }
-    .project {
+
+    .projects {
       display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 24px;
-      align-items: start;
-      padding: 24px;
-      border: 1px solid var(--line);
-      background: var(--panel);
-      border-radius: 18px;
+      gap: 18px;
     }
-    .project h3 { margin: 0 0 7px; font-size: 21px; }
-    .project p { margin: 0; color: var(--muted); max-width: 780px; }
-    .project a {
+    .project {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 28px;
+      align-items: center;
+      padding: 32px;
+      border: 1px solid #343c49;
+      background:
+        linear-gradient(120deg, rgba(183,243,74,.045), transparent 34%),
+        var(--panel);
+      border-radius: 22px;
+      box-shadow: 0 14px 40px rgba(0,0,0,.13);
+    }
+    .project::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 3px;
+      background: linear-gradient(var(--accent), rgba(183,243,74,.18));
+    }
+    .project-purpose {
+      margin-bottom: 7px;
+      color: var(--accent-soft);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .065em;
+    }
+    .project h3 {
+      margin: 0 0 11px;
+      font-size: clamp(25px, 3vw, 34px);
+      letter-spacing: -.035em;
+    }
+    .project p {
+      margin: 0;
+      color: #b4bbc6;
+      max-width: 760px;
+      font-size: 16px;
+    }
+    .project-link {
+      align-self: center;
       white-space: nowrap;
       color: var(--accent);
-      font-weight: 750;
+      font-weight: 800;
       text-decoration: none;
       font-size: 14px;
+      padding: 11px 13px;
+      border-radius: 11px;
+      border: 1px solid rgba(183,243,74,.22);
+      background: rgba(183,243,74,.045);
     }
-    .team {
+    .project-link:hover { background: rgba(183,243,74,.09); }
+
+    .workflow {
+      padding: 28px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.018);
+      border-radius: var(--radius);
+    }
+    .workflow-steps {
+      display: grid;
+      grid-template-columns: auto auto auto auto auto auto auto auto auto;
+      align-items: center;
+      gap: 10px;
+    }
+    .workflow-step {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 58px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: var(--panel);
+      text-align: center;
+      font-size: 14px;
+      font-weight: 720;
+    }
+    .workflow-step:last-of-type {
+      border-color: rgba(183,243,74,.27);
+      color: var(--accent-soft);
+    }
+    .workflow-arrow { color: #68717e; font-size: 18px; text-align: center; }
+    .workflow-note {
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .team-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
+      gap: 18px;
     }
     .person {
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 42% minmax(0, 1fr);
+      min-height: 390px;
       border: 1px solid var(--line);
       background: var(--panel);
       border-radius: var(--radius);
-      padding: 28px;
     }
-    .person .role {
+    .portrait-wrap {
+      position: relative;
+      min-height: 390px;
+      overflow: hidden;
+      background: #111318;
+    }
+    .portrait-wrap::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent 62%, rgba(23,26,33,.44));
+      pointer-events: none;
+    }
+    .portrait {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .portrait.natalia { object-position: 44% 20%; }
+    .portrait.mikhail { object-position: 52% 18%; filter: brightness(.88) saturate(.90); }
+    .person-copy {
+      padding: 30px;
+      align-self: center;
+    }
+    .person-role {
+      margin-bottom: 9px;
       color: var(--accent);
       font-size: 13px;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: .06em;
-      margin-bottom: 10px;
+      letter-spacing: .065em;
     }
-    .person h3 { margin: 0 0 16px; font-size: 25px; }
-    .person-skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+    .person h3 {
+      margin: 0 0 14px;
+      font-size: 27px;
+      letter-spacing: -.03em;
     }
-    .person-skills span {
-      display: inline-flex;
-      padding: 7px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.025);
-      color: #cbd1da;
-      font-size: 13px;
-    }
-    .team-flow {
-      margin-top: 18px;
-      padding: 16px 20px;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: rgba(255,255,255,.02);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      color: var(--muted);
-      font-size: 14px;
-      text-align: center;
-    }
-    .team-flow b {
-      color: var(--accent);
-      font-size: 18px;
-      font-weight: 800;
-    }
+    .person p { margin: 0; color: var(--muted); }
+
     .cta {
       padding: 42px;
       border-radius: 28px;
       border: 1px solid rgba(183,243,74,.22);
       background: linear-gradient(135deg, rgba(183,243,74,.10), rgba(255,255,255,.025));
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
       align-items: center;
-      gap: 28px;
+      gap: 32px;
     }
-    .cta h2 { margin: 0 0 8px; font-size: clamp(28px, 4vw, 42px); letter-spacing: -.04em; }
+    .cta h2 {
+      margin: 0 0 8px;
+      font-size: clamp(28px, 4vw, 42px);
+      letter-spacing: -.04em;
+    }
     .cta p { margin: 0; color: #c3cad4; }
+    .contact-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      min-width: 0;
+    }
+    .contact-email {
+      color: var(--muted);
+      font-size: 14px;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+    .contact-email:hover { color: var(--text); }
+
     footer {
       padding: 42px 0 54px;
       color: #7f8896;
       font-size: 13px;
     }
-    @media (max-width: 820px) {
-      .hero { grid-template-columns: 1fr; padding-top: 72px; }
-      .terminal { order: 2; }
-      .grid, .team { grid-template-columns: 1fr; }
-      .team-flow { flex-wrap: wrap; }
-      .project { grid-template-columns: 1fr; }
-      .cta { flex-direction: column; align-items: flex-start; }
+
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; padding-top: 76px; }
+      .process-panel { max-width: 720px; }
+      .workflow-steps {
+        grid-template-columns: 1fr;
+      }
+      .workflow-arrow { transform: rotate(90deg); }
+      .person { grid-template-columns: 40% minmax(0, 1fr); }
+      .cta { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 900px) {
+      .team-grid { grid-template-columns: 1fr; }
+      .person { grid-template-columns: 40% minmax(0, 1fr); }
+    }
+
+    @media (max-width: 760px) {
+      section { padding: 58px 0; }
+      .services-grid, .team-grid { grid-template-columns: 1fr; }
+      .project { grid-template-columns: 1fr; padding: 26px; }
+      .project-link { justify-self: start; }
       .navlinks { display: none; }
+      .person { grid-template-columns: 1fr; min-height: 0; }
+      .portrait-wrap { min-height: 360px; aspect-ratio: 4 / 3; }
+      .portrait-wrap::after { background: linear-gradient(180deg, transparent 64%, rgba(23,26,33,.55)); }
+      .portrait.natalia { object-position: 50% 17%; }
+      .portrait.mikhail { object-position: 50% 14%; }
+    }
+
+    @media (max-width: 430px) {
+      .wrap { width: min(calc(100% - 24px), var(--max)); }
+      .hero { padding: 58px 0 48px; gap: 34px; }
+      h1 { font-size: clamp(42px, 14vw, 58px); }
+      .hero-copy { font-size: 18px; }
+      .actions { flex-direction: column; align-items: stretch; }
+      .btn { width: 100%; min-height: 50px; }
+      .hero-process { padding: 20px; }
+      .service-card, .project, .workflow, .person-copy, .cta { padding: 22px; }
+      .project-purpose { font-size: 12px; }
+      .project h3 { font-size: 26px; }
+      .portrait-wrap { min-height: 320px; aspect-ratio: 1 / 1; }
+      .contact-actions { width: 100%; }
+      .contact-email { max-width: 100%; }
     }
   </style>
 </head>
@@ -301,150 +461,160 @@
       </nav>
     </div>
   </header>
+
   <main>
     <div class="wrap hero">
       <div>
         <div class="eyebrow">Разработка продуктов • AI-автоматизация</div>
         <h1>Идея должна дойти до релиза.</h1>
-        <p>
-          mustShip — небольшая команда разработки цифровых продуктов.
-          Превращаем идеи и ручные бизнес-процессы в работающие web-сервисы,
-          внутренние инструменты, интеграции и MVP.
-        </p>
+        <p class="hero-copy">mustShip — небольшая команда разработки цифровых продуктов. Превращаем идеи и ручные бизнес-процессы в работающие web-сервисы, внутренние инструменты, интеграции и MVP.</p>
         <div class="actions">
-          <a class="btn btn-primary" href="mailto:style.gushinets@gmail.com?subject=Задача для mustShip">Обсудить задачу</a>
+          <a class="btn btn-primary" href="mailto:MustShip.gushinets@gmail.com?subject=Задача для mustShip">Обсудить задачу</a>
           <a class="btn btn-secondary" href="#projects">Посмотреть проекты</a>
         </div>
       </div>
-      <div class="terminal" aria-label="Принцип работы mustShip">
-        <div class="terminal-top">
-          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-        </div>
-        <div class="terminal-body">
-          <div><span class="dim">$</span> idea</div>
-          <div>↓</div>
-          <div><span class="green">mustShip</span> = true</div>
-          <div>↓</div>
-          <div>working software</div>
-          <br />
-          <div class="dim">// меньше лишнего scope</div>
-          <div class="dim">// быстрее к рабочему результату</div>
+
+      <div class="process-panel" aria-label="Как задача превращается в рабочий результат">
+        <div class="panel-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+        <div class="hero-process">
+          <div class="hero-step">Задача</div>
+          <div class="down">↓</div>
+          <div class="hero-step">Минимальный рабочий объём</div>
+          <div class="down">↓</div>
+          <div class="hero-step">Разработка</div>
+          <div class="down">↓</div>
+          <div class="hero-step">Рабочий результат</div>
         </div>
       </div>
     </div>
+
     <section id="services">
       <div class="wrap">
         <div class="section-head">
           <h2>Что делаем</h2>
-          <p>Берём ограниченную бизнес-задачу или идею цифрового продукта и собираем рабочее решение без лишней сложности.</p>
+          <p>Берём конкретную бизнес-задачу или идею продукта и доводим её до работающего решения без лишней сложности.</p>
         </div>
-        <div class="grid">
-          <article class="card">
-            <h3>Web-сервисы и MVP</h3>
-            <p>Небольшие цифровые продукты, личные кабинеты, рабочие интерфейсы и сервисы для проверки идеи.</p>
-            <span class="tag">Web</span><span class="tag">MVP</span><span class="tag">Full-stack</span>
+        <div class="services-grid">
+          <article class="service-card">
+            <h3>Проверить идею продукта</h3>
+            <p>Собираем минимальную рабочую версию web-сервиса или MVP, чтобы проверить идею без долгой и дорогой разработки.</p>
+            <div class="tags"><span class="tag">Web</span><span class="tag">MVP</span><span class="tag">Full-stack</span></div>
           </article>
-          <article class="card">
-            <h3>AI-автоматизация</h3>
-            <p>Встраиваем готовые AI/LLM API в конкретный процесс: документы, заявки, классификация, подготовка ответов и внутренняя рутина.</p>
-            <span class="tag">LLM API</span><span class="tag">Automation</span><span class="tag">Documents</span>
+          <article class="service-card">
+            <h3>Убрать ручную работу</h3>
+            <p>Автоматизируем обработку документов, заявок, сообщений, классификацию, подготовку ответов и другие повторяющиеся процессы с помощью AI.</p>
+            <div class="tags"><span class="tag">AI</span><span class="tag">LLM API</span><span class="tag">Automation</span></div>
           </article>
-          <article class="card">
-            <h3>Внутренние инструменты</h3>
-            <p>Инструменты для сотрудников и руководителей: обработка информации, контроль процессов, базы знаний и небольшие операционные системы.</p>
-            <span class="tag">Internal tools</span><span class="tag">B2B</span>
+          <article class="service-card">
+            <h3>Сделать внутренний инструмент</h3>
+            <p>Создаём небольшие рабочие системы для сотрудников и руководителей: обработка информации, контроль процессов, базы знаний и внутренние сервисы.</p>
+            <div class="tags"><span class="tag">Internal tools</span><span class="tag">B2B</span></div>
           </article>
-          <article class="card">
-            <h3>API и Telegram-интеграции</h3>
-            <p>Соединяем сервисы, Telegram, базы данных и внешние API в один рабочий сценарий.</p>
-            <span class="tag">API</span><span class="tag">Telegram</span><span class="tag">Integrations</span>
+          <article class="service-card">
+            <h3>Связать существующие сервисы</h3>
+            <p>Соединяем Telegram, базы данных, внешние сервисы и API в единый рабочий сценарий.</p>
+            <div class="tags"><span class="tag">API</span><span class="tag">Telegram</span><span class="tag">Integrations</span></div>
           </article>
         </div>
       </div>
     </section>
+
     <section id="projects">
       <div class="wrap">
-        <div class="section-head">
-          <h2>Наши проекты:</h2>
-        </div>
+        <div class="section-head"><h2>Наши проекты:</h2></div>
         <div class="projects">
           <article class="project">
             <div>
+              <div class="project-purpose">Контроль изменений требований</div>
               <h3>ScopeCreepGuard</h3>
-              <p>Веб-сервис, который сопоставляет новый запрос клиента с согласованным объёмом проекта, объясняет вывод и готовит черновик ответа.</p>
+              <p>Веб-сервис, который сравнивает новый запрос клиента с согласованным объёмом проекта, объясняет расхождения и готовит черновик ответа.</p>
+              <div class="tags"><span class="tag">Web</span><span class="tag">AI</span></div>
             </div>
-            <a href="https://github.com/gushinets/ScopeCreepGuard" target="_blank" rel="noopener">GitHub ↗</a>
+            <a class="project-link" href="https://github.com/gushinets/ScopeCreepGuard" target="_blank" rel="noopener">GitHub ↗</a>
           </article>
+
           <article class="project">
             <div>
+              <div class="project-purpose">Подготовка заданий для AI</div>
               <h3>PromptEngineerBot</h3>
-              <p>Telegram-помощник для превращения короткого текстового или голосового запроса в более подробное задание для AI.</p>
+              <p>Telegram-помощник, который превращает короткий текстовый или голосовой запрос в более подробное и структурированное задание для AI.</p>
+              <div class="tags"><span class="tag">Telegram</span><span class="tag">AI</span></div>
             </div>
-            <a href="https://github.com/gushinets/PromptEngineerBot" target="_blank" rel="noopener">GitHub ↗</a>
+            <a class="project-link" href="https://github.com/gushinets/PromptEngineerBot" target="_blank" rel="noopener">GitHub ↗</a>
           </article>
+
           <article class="project">
             <div>
+              <div class="project-purpose">Работа с AI-запросами в браузере</div>
               <h3>PromptOptimizer</h3>
-              <p>Браузерное расширение для улучшения, сохранения и повторного использования AI-запросов прямо в браузере.</p>
+              <p>Браузерное расширение для улучшения, сохранения и повторного использования AI-запросов прямо во время работы.</p>
+              <div class="tags"><span class="tag">Browser Extension</span><span class="tag">AI</span></div>
             </div>
-            <a href="https://chromewebstore.google.com/detail/promptoptimizer/fbageijibmjblopdbgpdcpkojhnjjbpe" target="_blank" rel="noopener">Chrome Web Store ↗</a>
+            <a class="project-link" href="https://chromewebstore.google.com/detail/promptoptimizer/fbageijibmjblopdbgpdcpkojhnjjbpe" target="_blank" rel="noopener">Chrome Web Store ↗</a>
           </article>
+
           <article class="project">
             <div>
+              <div class="project-purpose">Поиск информации в базе резюме</div>
               <h3>CV_screener</h3>
-              <p>RAG-прототип для поиска профессионального опыта в подготовленной коллекции резюме и ответа по найденному контексту.</p>
+              <p>Прототип системы, которая ищет профессиональный опыт в коллекции резюме и формирует ответ на основе найденной информации.</p>
+              <div class="tags"><span class="tag">RAG</span><span class="tag">Documents</span><span class="tag">AI</span></div>
             </div>
-            <span class="tag">RAG / documents</span>
           </article>
+
           <article class="project">
             <div>
+              <div class="project-purpose">Перевод разговора в реальном времени</div>
               <h3>Live Translator</h3>
-              <p>Мобильное web-приложение для двустороннего перевода разговора на одном телефоне с realtime-аудио и WebRTC.</p>
+              <p>Мобильное web-приложение для двустороннего перевода разговора на одном телефоне с realtime-аудио.</p>
+              <div class="tags"><span class="tag">Web</span><span class="tag">Realtime</span><span class="tag">AI</span><span class="tag">WebRTC</span></div>
             </div>
-            <a href="https://github.com/gushinets/live-translator" target="_blank" rel="noopener">GitHub ↗</a>
+            <a class="project-link" href="https://github.com/gushinets/live-translator" target="_blank" rel="noopener">GitHub ↗</a>
           </article>
         </div>
       </div>
     </section>
+
+    <section id="workflow">
+      <div class="wrap">
+        <div class="section-head"><h2>Как работаем</h2></div>
+        <div class="workflow">
+          <div class="workflow-steps" aria-label="Этапы работы">
+            <div class="workflow-step">Задача</div><div class="workflow-arrow">→</div>
+            <div class="workflow-step">Определяем минимальный рабочий объём</div><div class="workflow-arrow">→</div>
+            <div class="workflow-step">Разрабатываем</div><div class="workflow-arrow">→</div>
+            <div class="workflow-step">Проверяем</div><div class="workflow-arrow">→</div>
+            <div class="workflow-step">Рабочий результат</div>
+          </div>
+          <p class="workflow-note">Сначала определяем минимальный объём, который решает задачу. Не добавляем функции только потому, что их можно сделать.</p>
+        </div>
+      </div>
+    </section>
+
     <section id="team">
       <div class="wrap">
-        <div class="section-head">
-          <h2>Команда</h2>
-        </div>
-        <div class="team">
+        <div class="section-head"><h2>Команда</h2></div>
+        <div class="team-grid">
           <article class="person">
-            <div class="role">Клиентская часть</div>
-            <h3>Наталья Гушинец</h3>
-            <div class="person-skills">
-              <span>Первый контакт</span>
-              <span>Уточнение задачи</span>
-              <span>Организация проекта</span>
-              <span>Коммуникация</span>
+            <div class="portrait-wrap"><img class="portrait natalia" src="assets/natalia-gushinets.webp" alt="Наталья Гушинец" loading="lazy"></div>
+            <div class="person-copy">
+              <div class="person-role">Работа с заказчиком</div>
+              <h3>Наталья Гушинец</h3>
+              <p>Первый контакт, уточнение задачи, организация проекта и коммуникация в процессе работы.</p>
             </div>
           </article>
           <article class="person">
-            <div class="role">Техническая часть</div>
-            <h3>Михаил Гушинец</h3>
-            <div class="person-skills">
-              <span>Оценка</span>
-              <span>Архитектура</span>
-              <span>Разработка</span>
-              <span>Тестирование</span>
-              <span>Технические обсуждения</span>
+            <div class="portrait-wrap"><img class="portrait mikhail" src="assets/mikhail-gushinets.webp" alt="Михаил Гушинец" loading="lazy"></div>
+            <div class="person-copy">
+              <div class="person-role">Техническая реализация</div>
+              <h3>Михаил Гушинец</h3>
+              <p>Оценка задачи, архитектура, разработка, тестирование и технические обсуждения.</p>
             </div>
           </article>
-        </div>
-        <div class="team-flow" aria-label="Как мы работаем">
-          <span>Задача клиента</span>
-          <b>→</b>
-          <span>Наталья</span>
-          <b>→</b>
-          <span>Михаил</span>
-          <b>→</b>
-          <span>Рабочий результат</span>
         </div>
       </div>
     </section>
+
     <section id="contact">
       <div class="wrap">
         <div class="cta">
@@ -452,15 +622,17 @@
             <h2>Есть задача, которую нужно довести до рабочего результата?</h2>
             <p>Опишите её в нескольких предложениях — начнём с минимального разумного объёма.</p>
           </div>
-          <a class="btn btn-primary" href="mailto:style.gushinets@gmail.com?subject=Задача для mustShip">style.gushinets@gmail.com</a>
+          <div class="contact-actions">
+            <a class="btn btn-primary" href="mailto:MustShip.gushinets@gmail.com?subject=Задача для mustShip">Написать нам</a>
+            <a class="contact-email" href="mailto:MustShip.gushinets@gmail.com">MustShip.gushinets@gmail.com</a>
+          </div>
         </div>
       </div>
     </section>
   </main>
+
   <footer>
-    <div class="wrap">
-      © 2026 mustShip. Разработка цифровых продуктов и автоматизация.
-    </div>
+    <div class="wrap">© 2026 mustShip. Разработка цифровых продуктов и автоматизация.</div>
   </footer>
 </body>
 </html>
