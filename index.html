@@ -227,8 +227,40 @@
       letter-spacing: .06em;
       margin-bottom: 10px;
     }
-    .person h3 { margin: 0 0 10px; font-size: 25px; }
-    .person p { margin: 0; color: var(--muted); }
+    .person h3 { margin: 0 0 16px; font-size: 25px; }
+    .person-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .person-skills span {
+      display: inline-flex;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.025);
+      color: #cbd1da;
+      font-size: 13px;
+    }
+    .team-flow {
+      margin-top: 18px;
+      padding: 16px 20px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,.02);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+    .team-flow b {
+      color: var(--accent);
+      font-size: 18px;
+      font-weight: 800;
+    }
     .cta {
       padding: 42px;
       border-radius: 28px;
@@ -250,6 +282,7 @@
       .hero { grid-template-columns: 1fr; padding-top: 72px; }
       .terminal { order: 2; }
       .grid, .team { grid-template-columns: 1fr; }
+      .team-flow { flex-wrap: wrap; }
       .project { grid-template-columns: 1fr; }
       .cta { flex-direction: column; align-items: flex-start; }
       .navlinks { display: none; }
@@ -377,19 +410,38 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Команда</h2>
-          <p>Разделяем клиентскую коммуникацию и техническую реализацию — заказчик всегда понимает, с кем обсуждает бизнес-задачу, а с кем технические решения.</p>
         </div>
         <div class="team">
           <article class="person">
-            <div class="role">Technical lead</div>
-            <h3>Михаил Гушинец</h3>
-            <p>Техническая оценка, архитектура, разработка, тестирование и технические обсуждения проекта.</p>
+            <div class="role">Клиентская часть</div>
+            <h3>Наталья Гушинец</h3>
+            <div class="person-skills">
+              <span>Первый контакт</span>
+              <span>Уточнение задачи</span>
+              <span>Организация проекта</span>
+              <span>Коммуникация</span>
+            </div>
           </article>
           <article class="person">
-            <div class="role">Project lead</div>
-            <h3>Наталья Гушинец</h3>
-            <p>Первый контакт, уточнение задачи, клиентская коммуникация и организация проекта.</p>
+            <div class="role">Техническая часть</div>
+            <h3>Михаил Гушинец</h3>
+            <div class="person-skills">
+              <span>Оценка</span>
+              <span>Архитектура</span>
+              <span>Разработка</span>
+              <span>Тестирование</span>
+              <span>Технические обсуждения</span>
+            </div>
           </article>
+        </div>
+        <div class="team-flow" aria-label="Как мы работаем">
+          <span>Задача клиента</span>
+          <b>→</b>
+          <span>Наталья</span>
+          <b>→</b>
+          <span>Михаил</span>
+          <b>→</b>
+          <span>Рабочий результат</span>
         </div>
       </div>
     </section>
