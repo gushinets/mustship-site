@@ -22,7 +22,6 @@ required = [
     "CV_screener",
     "Перевод разговора в реальном времени",
     "Live Translator",
-    "Как работаем",
     "Работа с заказчиком",
     "Техническая реализация",
     "MustShip.gushinets@gmail.com",
@@ -38,9 +37,11 @@ forbidden = [
     "mustShip = true",
     "Задача клиента → Наталья → Михаил → Рабочий результат",
     "Web-сервисы и MVP</h3>",
+    "Как работаем",
+    '<section id="workflow">',
 ]
 for item in forbidden:
-    assert item not in html, f"stale content remains: {item}"
+    assert item not in html, f"stale content remains: {ite}"
 
 assert "@media" in html, "responsive CSS missing"
 assert "overflow-wrap" in html or "word-break" in html, "email wrapping safeguard missing"

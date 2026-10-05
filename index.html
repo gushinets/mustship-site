@@ -277,41 +277,6 @@
     }
     .project-link:hover { background: rgba(183,243,74,.09); }
 
-    .workflow {
-      padding: 28px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.018);
-      border-radius: var(--radius);
-    }
-    .workflow-steps {
-      display: grid;
-      grid-template-columns: auto auto auto auto auto auto auto auto auto;
-      align-items: center;
-      gap: 10px;
-    }
-    .workflow-step {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 58px;
-      padding: 10px 14px;
-      border: 1px solid var(--line);
-      border-radius: 13px;
-      background: var(--panel);
-      text-align: center;
-      font-size: 14px;
-      font-weight: 720;
-    }
-    .workflow-step:last-of-type {
-      border-color: rgba(183,243,74,.27);
-      color: var(--accent-soft);
-    }
-    .workflow-arrow { color: #68717e; font-size: 18px; text-align: center; }
-    .workflow-note {
-      margin: 18px 0 0;
-      color: var(--muted);
-      font-size: 15px;
-    }
 
     .team-grid {
       display: grid;
@@ -406,10 +371,6 @@
     @media (max-width: 980px) {
       .hero { grid-template-columns: 1fr; padding-top: 76px; }
       .process-panel { max-width: 720px; }
-      .workflow-steps {
-        grid-template-columns: 1fr;
-      }
-      .workflow-arrow { transform: rotate(90deg); }
       .person { grid-template-columns: 40% minmax(0, 1fr); }
       .cta { grid-template-columns: 1fr; }
     }
@@ -440,7 +401,7 @@
       .actions { flex-direction: column; align-items: stretch; }
       .btn { width: 100%; min-height: 50px; }
       .hero-process { padding: 20px; }
-      .service-card, .project, .workflow, .person-copy, .cta { padding: 22px; }
+      .service-card, .project, .person-copy, .cta { padding: 22px; }
       .project-purpose { font-size: 12px; }
       .project h3 { font-size: 26px; }
       .portrait-wrap { min-height: 320px; aspect-ratio: 1 / 1; }
@@ -492,7 +453,7 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Что делаем</h2>
-          <p>Берём конкретную бизнес-задачу или идею продукта и доводим её до работающего решения без лишней сложности.</p>
+          <p>Берём конкретную бизнеф-задачу или идею продукта и доводим её до работающего решения без лишней сложности.</p>
         </div>
         <div class="services-grid">
           <article class="service-card">
@@ -501,13 +462,13 @@
             <div class="tags"><span class="tag">Web</span><span class="tag">MVP</span><span class="tag">Full-stack</span></div>
           </article>
           <article class="service-card">
-            <h3>Убрать ручную работу</h3>
+            <h3>Убрать нучную работу</h3>
             <p>Автоматизируем обработку документов, заявок, сообщений, классификацию, подготовку ответов и другие повторяющиеся процессы с помощью AI.</p>
             <div class="tags"><span class="tag">AI</span><span class="tag">LLM API</span><span class="tag">Automation</span></div>
           </article>
           <article class="service-card">
             <h3>Сделать внутренний инструмент</h3>
-            <p>Создаём небольшие рабочие системы для сотрудников и руководителей: обработка информации, контроль процессов, базы знаний и внутренние сервисы.</p>
+            <p>Создём небольшие рабочие системы для сотрудников и руководителей: обработка информации, контроль процессов, базы знаний и внутренние сервисы.</p>
             <div class="tags"><span class="tag">Internal tools</span><span class="tag">B2B</span></div>
           </article>
           <article class="service-card">
@@ -571,22 +532,6 @@
             </div>
             <a class="project-link" href="https://github.com/gushinets/live-translator" target="_blank" rel="noopener">GitHub ↗</a>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="workflow">
-      <div class="wrap">
-        <div class="section-head"><h2>Как работаем</h2></div>
-        <div class="workflow">
-          <div class="workflow-steps" aria-label="Этапы работы">
-            <div class="workflow-step">Задача</div><div class="workflow-arrow">→</div>
-            <div class="workflow-step">Определяем минимальный рабочий объём</div><div class="workflow-arrow">→</div>
-            <div class="workflow-step">Разрабатываем</div><div class="workflow-arrow">→</div>
-            <div class="workflow-step">Проверяем</div><div class="workflow-arrow">→</div>
-            <div class="workflow-step">Рабочий результат</div>
-          </div>
-          <p class="workflow-note">Сначала определяем минимальный объём, который решает задачу. Не добавляем функции только потому, что их можно сделать.</p>
         </div>
       </div>
     </section>
