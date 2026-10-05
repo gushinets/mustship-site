@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>mustShip — разработка цифровых продуктов и AI-автоматизация</title>
+  <meta name="description" content="mustShip — небольшая product engineering команда. Web-сервисы, внутренние инструменты, AI-автоматизация, API и Telegram-интеграции, MVP." />
+  <meta name="theme-color" content="#0f1115" />
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #171a21;
+      --panel-2: #1d212a;
+      --text: #f4f6f8;
+      --muted: #aab1bd;
+      --line: #2b313d;
+      --accent: #b7f34a;
+      --accent-2: #d6ff8a;
+      --max: 1120px;
+      --radius: 22px;
+      --shadow: 0 24px 70px rgba(0,0,0,.28);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 82% 0%, rgba(183,243,74,.12), transparent 34%),
+        radial-gradient(circle at 8% 32%, rgba(99,102,241,.10), transparent 24%),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+    a { color: inherit; }
+    .wrap { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(16px);
+      background: rgba(15,17,21,.78);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      font-size: 22px;
+      font-weight: 850;
+      letter-spacing: -.04em;
+      text-decoration: none;
+    }
+    .brand span { color: var(--accent); }
+    .navlinks {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .navlinks a { text-decoration: none; }
+    .navlinks a:hover { color: var(--text); }
+    .hero {
+      padding: 104px 0 72px;
+      display: grid;
+      grid-template-columns: 1.12fr .88fr;
+      gap: 52px;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 11px;
+      border: 1px solid rgba(183,243,74,.28);
+      background: rgba(183,243,74,.07);
+      border-radius: 999px;
+      color: var(--accent-2);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+    h1 {
+      font-size: clamp(44px, 7vw, 80px);
+      line-height: .98;
+      letter-spacing: -.06em;
+      margin: 0 0 26px;
+      max-width: 850px;
+    }
+    .hero p {
+      color: #c4cad4;
+      font-size: clamp(18px, 2vw, 22px);
+      max-width: 720px;
+      margin: 0 0 32px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 13px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 15px;
+      border: 1px solid var(--line);
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #11140d;
+      border-color: var(--accent);
+    }
+    .btn-primary:hover { background: #c7ff60; }
+    .btn-secondary { background: rgba(255,255,255,.03); }
+    .btn-secondary:hover { background: rgba(255,255,255,.07); }
+    .terminal {
+      background: linear-gradient(180deg, #161920, #111319);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .terminal-top {
+      display: flex;
+      gap: 7px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+    }
+    .dot { width: 9px; height: 9px; border-radius: 50%; background: #5d6470; }
+    .terminal-body {
+      padding: 26px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 15px;
+      color: #d9dee7;
+    }
+    .terminal-body .green { color: var(--accent); }
+    .terminal-body .dim { color: #7f8896; }
+    section { padding: 76px 0; }
+    .section-head {
+      margin-bottom: 32px;
+      max-width: 780px;
+    }
+    .section-head h2 {
+      margin: 0 0 12px;
+      font-size: clamp(32px, 4vw, 48px);
+      letter-spacing: -.045em;
+    }
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .card {
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.018));
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      letter-spacing: -.025em;
+    }
+    .card p { margin: 0; color: var(--muted); }
+    .tag {
+      display: inline-flex;
+      margin-top: 18px;
+      margin-right: 7px;
+      padding: 6px 9px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: #cbd1da;
+      font-size: 12px;
+      background: rgba(255,255,255,.025);
+    }
+    .projects { display: grid; gap: 14px; }
+    .project {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: start;
+      padding: 24px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 18px;
+    }
+    .project h3 { margin: 0 0 7px; font-size: 21px; }
+    .project p { margin: 0; color: var(--muted); max-width: 780px; }
+    .project a {
+      white-space: nowrap;
+      color: var(--accent);
+      font-weight: 750;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .team {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .person {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+    .person .role {
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 10px;
+    }
+    .person h3 { margin: 0 0 10px; font-size: 25px; }
+    .person p { margin: 0; color: var(--muted); }
+    .cta {
+      padding: 42px;
+      border-radius: 28px;
+      border: 1px solid rgba(183,243,74,.22);
+      background: linear-gradient(135deg, rgba(183,243,74,.10), rgba(255,255,255,.025));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 28px;
+    }
+    .cta h2 { margin: 0 0 8px; font-size: clamp(28px, 4vw, 42px); letter-spacing: -.04em; }
+    .cta p { margin: 0; color: #c3cad4; }
+    footer {
+      padding: 42px 0 54px;
+      color: #7f8896;
+      font-size: 13px;
+    }
+    @media (max-width: 820px) {
+      .hero { grid-template-columns: 1fr; padding-top: 72px; }
+      .terminal { order: 2; }
+      .grid, .team { grid-template-columns: 1fr; }
+      .project { grid-template-columns: 1fr; }
+      .cta { flex-direction: column; align-items: flex-start; }
+      .navlinks { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a href="#" class="brand">must<span>Ship</span></a>
+      <nav class="navlinks" aria-label="Навигация">
+        <a href="#services">Что делаем</a>
+        <a href="#projects">Проекты</a>
+        <a href="#team">Команда</a>
+        <a href="#contact">Контакт</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="wrap hero">
+      <div>
+        <div class="eyebrow">Product engineering • AI automation</div>
+        <h1>Идея должна дойти до релиза.</h1>
+        <p>
+          mustShip — небольшая команда разработки цифровых продуктов.
+          Превращаем идеи и ручные бизнес-процессы в работающие web-сервисы,
+          внутренние инструменты, интеграции и MVP.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="mailto:style.gushinets@gmail.com?subject=Задача для mustShip">Обсудить задачу</a>
+          <a class="btn btn-secondary" href="#projects">Посмотреть проекты</a>
+        </div>
+      </div>
+      <div class="terminal" aria-label="Принцип работы mustShip">
+        <div class="terminal-top">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </div>
+        <div class="terminal-body">
+          <div><span class="dim">$</span> idea</div>
+          <div>↓</div>
+          <div><span class="green">mustShip</span> = true</div>
+          <div>↓</div>
+          <div>working software</div>
+          <br />
+          <div class="dim">// меньше лишнего scope</div>
+          <div class="dim">// быстрее к рабочему результату</div>
+        </div>
+      </div>
+    </div>
+    <section id="services">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Что делаем</h2>
+          <p>Берём ограниченную бизнес-задачу или идею цифрового продукта и собираем рабочее решение без лишней сложности.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>Web-сервисы и MVP</h3>
+            <p>Небольшие цифровые продукты, личные кабинеты, рабочие интерфейсы и сервисы для проверки идеи.</p>
+            <span class="tag">Web</span><span class="tag">MVP</span><span class="tag">Full-stack</span>
+          </article>
+          <article class="card">
+            <h3>AI-автоматизация</h3>
+            <p>Встраиваем готовые AI/LLM API в конкретный процесс: документы, заявки, классификация, подготовка ответов и внутренняя рутина.</p>
+            <span class="tag">LLM API</span><span class="tag">Automation</span><span class="tag">Documents</span>
+          </article>
+          <article class="card">
+            <h3>Внутренние инструменты</h3>
+            <p>Инструменты для сотрудников и руководителей: обработка информации, контроль процессов, базы знаний и небольшие операционные системы.</p>
+            <span class="tag">Internal tools</span><span class="tag">B2B</span>
+          </article>
+          <article class="card">
+            <h3>API и Telegram-интеграции</h3>
+            <p>Соединяем сервисы, Telegram, базы данных и внешние API в один рабочий сценарий.</p>
+            <span class="tag">API</span><span class="tag">Telegram</span><span class="tag">Integrations</span>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Примеры проектов</h2>
+          <p>Проекты Михаила Гушинца: от идеи и архитектуры до разработки, тестирования и запуска.</p>
+        </div>
+        <div class="projects">
+          <article class="project">
+            <div>
+              <h3>ScopeCreepGuard</h3>
+              <p>Веб-сервис, который сопоставляет новый запрос клиента с согласованным объёмом проекта, объясняет вывод и готовит черновик ответа.</p>
+            </div>
+            <a href="https://github.com/gushinets/ScopeCreepGuard" target="_blank" rel="noopener">GitHub ↗</a>
+          </article>
+          <article class="project">
+            <div>
+              <h3>PromptEngineerBot</h3>
+              <p>Telegram-помощник для превращения короткого текстового или голосового запроса в более подробное задание для AI.</p>
+            </div>
+            <a href="https://github.com/gushinets/PromptEngineerBot" target="_blank" rel="noopener">GitHub ↗</a>
+          </article>
+          <article class="project">
+            <div>
+              <h3>PromptOptimizer</h3>
+              <p>Браузерное расширение для улучшения, сохранения и повторного использования AI-запросов прямо в браузере.</p>
+            </div>
+            <a href="https://chromewebstore.google.com/detail/promptoptimizer/fbageijibmjblopdbgpdcpkojhnjjbpe" target="_blank" rel="noopener">Chrome Web Store ↗</a>
+          </article>
+          <article class="project">
+            <div>
+              <h3>CV_screener</h3>
+              <p>RAG-прототип для поиска профессионального опыта в подготовленной коллекции резюме и ответа по найденному контексту.</p>
+            </div>
+            <span class="tag">RAG / documents</span>
+          </article>
+          <article class="project">
+            <div>
+              <h3>Live Translator</h3>
+              <p>Мобильное web-приложение для двустороннего перевода разговора на одном телефоне с realtime-аудио и WebRTC.</p>
+            </div>
+            <a href="https://github.com/gushinets/live-translator" target="_blank" rel="noopener">GitHub ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section id="team">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Команда</h2>
+          <p>Разделяем клиентскую коммуникацию и техническую реализацию — заказчик всегда понимает, с кем обсуждает бизнес-задачу, а с кем технические решения.</p>
+        </div>
+        <div class="team">
+          <article class="person">
+            <div class="role">Technical lead</div>
+            <h3>Михаил Гушинец</h3>
+            <p>Техническая оценка, архитектура, разработка, тестирование и технические обсуждения проекта.</p>
+          </article>
+          <article class="person">
+            <div class="role">Project lead</div>
+            <h3>Наталья Гушинец</h3>
+            <p>Первый контакт, уточнение задачи, клиентская коммуникация и организация проекта.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section id="contact">
+      <div class="wrap">
+        <div class="cta">
+          <div>
+            <h2>Есть задача, которую нужно довести до рабочего результата?</h2>
+            <p>Опишите её в нескольких предложениях — начнём с минимального разумного объёма.</p>
+          </div>
+          <a class="btn btn-primary" href="mailto:style.gushinets@gmail.com?subject=Задача для mustShip">style.gushinets@gmail.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap">
+      © 2026 mustShip. Разработка цифровых продуктов и автоматизация.
+    </div>
+  </footer>
+</body>
+</html>
