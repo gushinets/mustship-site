@@ -50,10 +50,7 @@ ul { padding: 0; list-style: none; }
 .process-step:last-child h3 { padding-left: calc(42 * var(--u)); }
 .process-step:last-child h3, .process-step:last-child p { width: calc(100% - 8 * var(--u)); }
 .process-step:last-child h3::after { left: 60%; }
-.process-drawing { display: block; width: 100%; height: calc(150 * var(--u)); overflow: visible; }
-.pencil-line, .pencil-shadow, .pencil-fine { fill: none; stroke: #454e51; stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round; }
-.pencil-shadow { stroke: #9ba29a; stroke-width: 2.5; opacity: .55; }
-.pencil-fine { stroke: #8a928d; stroke-width: .8; }
+.process-drawing { display: block; width: 100%; height: calc(150 * var(--u)); object-fit: contain; }
 .process-step:not(:last-child)::after { content: '→'; position: absolute; top: calc(115 * var(--u)); right: calc(-15 * var(--u)); font-family: 'Neucha', cursive; font-size: calc(24 * var(--u)); }
 .process-step p { padding-top: calc(10 * var(--u)); font-family: 'Neucha', cursive; font-weight: 700; font-size: calc(13.6 * var(--u)); line-height: calc(16 * var(--u)); color: #596166; transform: rotate(-5deg); }
 .process-step mark { color: #243e30; background: #b9f4c8; padding: 0 calc(3 * var(--u)); box-shadow: none; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
