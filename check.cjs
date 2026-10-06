@@ -15,7 +15,8 @@ async (page) => {
   check(Math.abs(layout.width - 977) < 1 && Math.abs(layout.height - 1610) < 2, 'Размер страницы отличается от макета');
   check(JSON.stringify(layout.sections) === JSON.stringify([76, 431, 745, 1204, 1453]), 'Секции сместились');
   check(layout.anchors, 'Найден неработающий якорь');
-  check(await page.locator('.brand, .hero-title, .services-title, .projects-title, .team-title, .contact-title, .hand-note').evaluateAll((elements) => elements.every((el) => el.textContent.trim() && getComputedStyle(el).backgroundImage === 'none')), 'Надписи должны отображаться текстом, без растрового фона');
+  check(await page.locator('.brand img').evaluate(image => image.complete && image.naturalWidth > 0), 'Логотип не загрузился');
+  check(await page.locator('.hero-title, .services-title, .projects-title, .team-title, .contact-title, .hand-note').evaluateAll((elements) => elements.every((el) => el.textContent.trim() && getComputedStyle(el).backgroundImage === 'none')), 'Надписи должны отображаться текстом, без растрового фона');
   check(await page.locator('#process img.process-drawing').count() === 4 && await page.locator('#process img.process-drawing').evaluateAll(images => images.every(image => image.complete && image.naturalWidth > 0)), 'В схеме процесса должны загрузиться четыре карандашные иллюстрации');
   check(await page.locator('.benefits svg, .service-heading svg, svg.service-drawing').count() === 14 && await page.locator('.benefits .art, .service-heading .art, .service-drawing.art').count() === 0, 'Иконки и рисунки услуг должны быть векторными');
   await page.screenshot({ path: 'output/playwright/desktop-977.png', fullPage: true, scale: 'css' });
