@@ -1,48 +1,37 @@
+from html.parser import HTMLParser
 from pathlib import Path
+import re
 
-html = Path("index.html").read_text(encoding="utf-8")
-required = [
-    "Разработка продуктов • AI-автоматизация",
-    "Идея должна дойти до релиза.",
-    "Задача",
-    "Минимальный рабочий объём",
-    "Разработка",
-    "Рабочий результат",
-    "Проверить идею продукта",
-    "Убрать ручную работу",
-    "Сделать внутренний инструмент",
-    "Связать существующие сервисы",
-    "Контроль изменений требований",
-    "ScopeCreepGuard",
-    "Подготовка заданий для AI",
-    "PromptEngineerBot",
-    "Работа с AI-запросами в браузере",
-    "PromptOptimizer",
-    "Поиск информации в базе резюме",
-    "CV_screener",
-    "Перевод разговора в реальном времени",
-    "Live Translator",
-    "Работа с заказчиком",
-    "Техническая реализация",
-    "MustShip.gushinets@gmail.com",
-    "mailto:MustShip.gushinets@gmail.com",
-    'src="assets/natalia-gushinets.webp"',
-    'src="assets/mikhail-gushinets.webp"',
-]
-for item in required:
-    assert item in html, f"missing required content: {item}"
+root = Path(__file__).resolve().parents[1]
 
-forbidden = [
-    "style.gushinets@gmail.com",
-    "mustShip = true",
-    "Задача клиента → Наталья → Михаил → Рабочий результат",
-    "Web-сервисы и MVP</h3>",
-    "Как работаем",
-    '<section id="workflow">',
-]
-for item in forbidden:
-    assert item not in html, f"stale content remains: {ite}"
 
-assert "@media" in html, "responsive CSS missing"
-assert "overflow-wrap" in html or "word-break" in html, "email wrapping safeguard missing"
+class Page(HTMLParser):
+    ids = set()
+    links = []
+    files = []
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        if "id" in attrs:
+            self.ids.add(attrs["id"])
+        if tag == "a" and "href" in attrs:
+            self.links.append(attrs["href"])
+        if tag in ("link", "script", "img"):
+            self.files.append(attrs.get("src") or attrs.get("href"))
+
+
+page = Page()
+page.feed((root / "index.html").read_text(encoding="utf-8"))
+assert {"main", "services", "projects", "process", "team", "contact", "project-dialog"} <= page.ids
+assert "mailto:MustShip.gushinets@gmail.com" in page.links
+for link in page.links:
+    if link.startswith("#"):
+        assert link[1:] in page.ids, f"broken anchor: {link}"
+for name in page.files:
+    assert name and (root / name).is_file(), f"missing resource: {name}"
+for css in (root / "styles.css", root / "assets/fonts.css"):
+    for reference in re.findall(r"""url\((?:'[^']*'|"[^"]*"|[^)]*)\)""", css.read_text(encoding="utf-8")):
+        resource = reference[4:-1].strip("'\" ")
+        if not resource.startswith(("data:", "#")):
+            assert (css.parent / resource).is_file(), f"missing CSS resource: {resource}"
 print("site-smoke: PASS")
