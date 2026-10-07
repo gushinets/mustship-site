@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 144">
+  <defs><filter id="pencil"><feTurbulence type="fractalNoise" baseFrequency=".075 .13" numOctaves="3" seed="15" result="grain"/><feDisplacementMap in="SourceGraphic" in2="grain" scale="1.4"/></filter><filter id="fiber"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" seed="4"/><feComposite in2="SourceGraphic" operator="in"/></filter></defs>
+  <path d="m18 17 137-7 10 119-141 9-4-5 2-8-4-10 2-7-3-10 3-8-2-13 1-10-3-12 3-10-2-11Z" fill="#e7e4d7" opacity=".65"/>
+  <path d="m18 17 137-7 10 119-141 9Z" fill="#858176" opacity=".1" filter="url(#fiber)"/>
+  <g fill="none" stroke="#646c62" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" filter="url(#pencil)">
+    <path d="M63 28q20-2 42 0v19H63ZM84 47v10m-4-4 4 4 4-4m-4 6 17 15-17 15-17-15Zm18 16h20v15m-4-4 4 4 4-4M68 74H47v15m-4-4 4 4 4-4M33 92h31v18H33Zm75 0h31v18h-31"/>
+    <path stroke="#3f7757" d="m76 36 4 4 8-8m-47 70 4 4 7-9m64 5h15"/>
+    <path stroke-width=".65" opacity=".4" d="m21 105 8-11m-7 17 9-12m-8 18 9-12m109-72 12-15m-10 20 12-15m-10 20 9-12m-30 79 20-1m-14 5 11-1"/>
+    <path stroke-width=".65" opacity=".3" d="m65 30 39-1v17H64m-29 48h28v15H35m75-15h28v15h-29"/>
+  </g>
+</svg>
