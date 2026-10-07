@@ -39,7 +39,8 @@ ul { padding: 0; list-style: none; }
 .button:hover { background: #2f3c36; border-color: #07924b; }
 .header-cta { position: absolute; top: calc(14 * var(--u)); right: calc(36 * var(--u)); width: calc(149 * var(--u)); }
 .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
-.hero { display: grid; grid-template-columns: calc(350 * var(--u)) minmax(0, 1fr); align-items: start; gap: calc(24 * var(--u)); padding: calc(36 * var(--u)) calc(16 * var(--u)) calc(23 * var(--u)) calc(43 * var(--u)); background: #faf7ef url('assets/hero-craft-paper.webp') center / cover no-repeat; isolation: isolate; }
+.hero { display: grid; grid-template-columns: calc(350 * var(--u)) minmax(0, 1fr); align-items: start; gap: calc(24 * var(--u)); padding: calc(36 * var(--u)) calc(16 * var(--u)) calc(23 * var(--u)) calc(43 * var(--u)); background: var(--paper); isolation: isolate; }
+.hero::before { content: ''; position: absolute; z-index: -1; inset: 0; background: url('assets/hero-craft-paper.webp') center / cover no-repeat; filter: grayscale(1); mix-blend-mode: luminosity; opacity: .65; pointer-events: none; }
 .hero-main { min-width: 0; }
 .hero-title { position: relative; width: 100%; height: calc(117 * var(--u)); }
 .hero-title-art { display: block; width: 100%; height: 100%; object-fit: contain; object-position: left center; }
@@ -54,9 +55,9 @@ ul { padding: 0; list-style: none; }
 .secondary { width: calc(150 * var(--u)); background: transparent; color: #3b443e; }
 .secondary:hover { background: #e8f6e9; }
 .benefits { display: grid; grid-template-columns: 77fr 79fr 97fr 76fr; gap: calc(4 * var(--u)); margin-top: calc(15 * var(--u)); font-family: 'Pangolin', cursive; font-size: calc(12 * var(--u)); line-height: calc(14 * var(--u)); }
-.benefits li { position: relative; }
-.benefits li::after { content: ''; position: absolute; left: calc(31 * var(--u)); top: calc(2 * var(--u)); width: calc(17 * var(--u)); height: calc(25 * var(--u)); background: url('assets/hero-green-strokes.svg') center / contain no-repeat; pointer-events: none; }
-.benefits .sketch-art { height: calc(27 * var(--u)); width: calc(29 * var(--u)); margin-bottom: calc(6 * var(--u)); stroke: #3b433d; filter: url(#service-pencil); }
+.benefits li { min-width: 0; }
+.benefits .sketch-art { height: calc(36 * var(--u)); width: calc(36 * var(--u)); margin-bottom: calc(7 * var(--u)); stroke: #3b433d; filter: url(#service-pencil); }
+.benefits .pencil-echo { opacity: .35; stroke-width: .85; }
 .process-illustration { position: relative; min-width: 0; margin-top: calc(13 * var(--u)); scroll-margin-top: 15px; }
 .process-steps { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.06fr) minmax(0, 1.18fr) minmax(0, 1.35fr); gap: calc(20 * var(--u)); margin: 0; padding: 0; list-style: none; }
 .process-step { position: relative; min-width: 0; }
