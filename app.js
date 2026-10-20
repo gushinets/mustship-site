@@ -5,6 +5,9 @@ document.querySelectorAll('[data-project]').forEach((card) => {
     document.querySelector('#dialog-title').textContent = card.dataset.project;
     document.querySelector('#dialog-headline').textContent = card.dataset.headline;
     document.querySelector('#dialog-description').textContent = card.dataset.description;
+    const demo = dialog.querySelector('.dialog-demo');
+    demo.hidden = !card.dataset.demo;
+    demo.querySelector('a').href = card.dataset.demo || '#';
     const benefits = card.dataset.benefits.split('|').map((benefit) => {
       const item = document.createElement('li');
       item.textContent = benefit;
