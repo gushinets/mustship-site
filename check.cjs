@@ -17,13 +17,14 @@ async (page) => {
   check(layout.anchors, 'Найден неработающий якорь');
   check(await page.locator('.brand img').evaluate(image => image.complete && image.naturalWidth > 0), 'Логотип не загрузился');
   check(await page.locator('.hero-title, .services-title, .projects-title, .team-title, .contact-title, .hand-note').evaluateAll((elements) => elements.every((el) => el.textContent.trim() && getComputedStyle(el).backgroundImage === 'none')), 'Надписи должны отображаться текстом, без растрового фона');
-  check(await page.locator('#process img.process-drawing').count() === 4 && await page.locator('#process img.process-drawing').evaluateAll(images => images.every(image => image.complete && image.naturalWidth > 0)), 'В схеме процесса должны загрузиться четыре карандашные иллюстрации');
+  check(await page.locator('#process > img').count() === 1 && await page.locator('#process > img').evaluate(image => image.complete && image.naturalWidth > 0), 'Единая иллюстрация разработки не загрузилась');
+  check(await page.locator('.proof-actions a').count() === 2 && await page.locator('.proof-actions a').first().getAttribute('href') === 'https://livetranslator.anytoolai.store/', 'Ссылка на работающий переводчик не подключена');
   check(await page.locator('.service').evaluateAll(cards => cards.every(card => card.querySelector('svg.service-drawing'))), 'У каждой услуги должна быть векторная иллюстрация');
   await page.screenshot({ path: 'output/playwright/desktop-977.png', fullPage: true, scale: 'css' });
 
   const cards = page.locator('[data-project]');
-  check(await cards.count() === 5, 'Должно быть пять проектов');
-  for (let i = 0; i < 5; i++) {
+  check(await cards.count() === 6, 'Должно быть шесть проектов');
+  for (let i = 0; i < 6; i++) {
     const card = cards.nth(i);
     await card.click();
     check(await page.locator('#project-dialog').isVisible(), 'Описание проекта не открылось');
@@ -101,5 +102,5 @@ async (page) => {
   check(errors.length === 0, `Ошибки JavaScript: ${errors.join(', ')}`);
   await page.setViewportSize({ width: 977, height: 1610 });
   await page.goto('http://127.0.0.1:4173/');
-  return { passed: true, layout, projects: 5, clipboard: 'copy and permission fallback passed', responsive, errors };
+  return { passed: true, layout, projects: 6, clipboard: 'copy and permission fallback passed', responsive, errors };
 }

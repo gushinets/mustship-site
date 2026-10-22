@@ -5,33 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="mustShip — команда, которая ценит понятные решения, открытый диалог и ответственность за результат. Разрабатываем веб-сервисы, автоматизируем работу и соединяем системы.">
   <meta name="theme-color" content="#f5f5f1">
-  <title>mustShip — Идея должна дойти до релиза</title>
+  <title>mustShip — Реализовать. Нельзя откладывать.</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/fonts.css">
-  <link rel="stylesheet" href="styles.css?v=f5a72e9688e0">
+  <link rel="stylesheet" href="styles.css?v=74b34f0c5c01">
   <script src="app.js?v=067c96ec9178" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти к содержанию</a>
   <div class="sheet" id="top">
-    <header class="header">
-      <span class="art paper-corner" aria-hidden="true" style="--x:0;--y:0;--w:66;--h:76"></span>
-      <a class="brand" href="#top" aria-label="mustShip — на главную"><img src="assets/logo-v2.jpg" alt="mustShip" width="1280" height="427" decoding="async"></a>
-      <nav aria-label="Основная навигация">
-        <a href="#team">О нас</a><a href="#services">Услуги</a><a href="#projects">Проекты</a><a href="#process">Процесс</a><a href="#contact">Контакты</a>
-      </nav>
+    <header class="header header-approved">
+      <a class="brand brand-approved" href="#top" aria-label="mustShip — на главную">
+        <span class="brand-art"><img src="assets/logo-v2.jpg" alt="mustShip" width="1280" height="427"></span>
+        <span class="brand-descriptor">разработка сервисов<br>автоматизация процессов</span>
+      </a>
+      <nav aria-label="Основная навигация"><a href="#team">О нас</a><a href="#services">Услуги</a><a href="#projects">Проекты</a><a href="#process">Процесс</a><a href="#contact">Контакты</a></nav>
       <a class="button header-cta" href="#contact">Обсудить задачу <svg class="pencil-arrow" viewBox="0 0 36 20" aria-hidden="true"><use href="#arrow-right"/></svg></a>
     </header>
 
     <main id="main">
-      <section class="hero" aria-labelledby="hero-title">
+      <section class="hero hero-approved" aria-labelledby="hero-title">
         <div class="hero-main">
-          <h1 id="hero-title" class="hero-title"><span class="visually-hidden">Идея должна дойти до релиза.</span><img class="hero-title-art" src="assets/hero-pencil-title.webp" alt="" width="2172" height="724" decoding="async" fetchpriority="high"></h1>
-          <p class="hero-copy">Создаём веб-сервисы и автоматизируем рутину, <br>чтобы вы тратили время на важное. <br>Берём на себя интерфейсы, разработку <br>и подключение к вашим системам.</p>
+          <h1 id="hero-title" class="hero-title"><span class="visually-hidden">Реализовать. Нельзя откладывать.</span>
+            <img class="approved-title" src="assets/hero-approved-title.jpg" alt="" width="600" height="194" decoding="async" fetchpriority="high">
+          </h1>
+          <p class="hero-copy">Создадим сервис по вашей задумке или свяжем системы, между которыми сейчас приходится переносить данные вручную.</p>
+          <p class="hero-outcome">Освободите время и ресурсы<br class="desktop-break"> для жизни и развития.</p>
           <div class="hero-actions">
             <a class="button primary" href="#contact">Обсудить задачу <svg class="pencil-arrow" viewBox="0 0 36 20" aria-hidden="true"><use href="#arrow-right"/></svg></a>
             <a class="button secondary" href="#projects">Посмотреть проекты</a>
           </div>
+          <p class="hero-helper">Для первого разговора достаточно<br>описать задачу своими словами.</p>
           <ul class="benefits" aria-label="Как мы работаем">
             <li><svg class="sketch-art" viewBox="0 0 44 44" aria-hidden="true"><use class="pencil-echo" href="#benefit-launch" transform="translate(.5 .4)"/><g id="benefit-launch"><path d="M14 26C17 18 25 8 38 6c-1 13-9 22-17 25Zm4-8h-6l-6 9 8-1m15 1v6l-9 6 1-8"/><circle cx="28" cy="16" r="3.5"/><path class="sketch-accent" d="M13 30q-7-1-7 8 8 0 9-6M3 33l-1 3m9 5-3 1"/></g></svg><span>Быстрый <br>старт</span></li>
             <li><svg class="sketch-art" viewBox="0 0 44 44" aria-hidden="true"><use class="pencil-echo" href="#benefit-process" transform="translate(.5 .4)"/><g id="benefit-process"><path d="M4 5h11v9H4Zm24 13h11v9H28ZM4 31h11v9H4ZM16 9h12q6 0 6 6m-3-3 3 4 3-4M27 23H16q-6 0-6 5m-3-3 3 4 3-4"/><path class="sketch-accent" d="m7 9 2 2 3-4m19 16 2 2 3-4m-29 16 2 2 3-4"/></g></svg><span>Понятный <br>процесс</span></li>
@@ -39,22 +43,16 @@
             <li><svg class="sketch-art" viewBox="0 0 44 44" aria-hidden="true"><use class="pencil-echo" href="#benefit-result" transform="translate(.5 .4)"/><g id="benefit-result"><path d="M7 7q15-1 30 0 3 0 3 3v23q0 3-3 3H7q-3 0-3-3V10q0-3 3-3Zm-3 8h36"/><circle cx="9" cy="11" r=".8"/><circle cx="13" cy="11" r=".8"/><circle cx="17" cy="11" r=".8"/><path class="sketch-accent" d="m13 25 7 7 12-13"/></g></svg><span>Реальный <br>результат</span></li>
           </ul>
         </div>
-        <div id="process" class="process-illustration" aria-label="Как мы ведём работу: от постановки задачи до запуска">
-          <ol class="process-steps">
-            <li class="process-step"><h3>1. ЗАДАЧА<small>(ФИКСИРУЕМ ЦЕЛЬ)</small><svg class="pencil-arrow process-heading-arrow" viewBox="0 0 20 36" aria-hidden="true"><use href="#arrow-down"/></svg></h3>
-              <img class="process-drawing" src="assets/hero-process-task.webp" alt="" width="1024" height="1536" decoding="async"><svg class="pencil-arrow process-connector" viewBox="0 0 36 20" aria-hidden="true"><use href="#arrow-right"/></svg><p>Разбираем задачу<br>и фиксируем<br>главное.</p>
-            </li>
-            <li class="process-step"><h3>2. ПРОТОТИП<small>(СОГЛАСУЕМ СЦЕНАРИИ)</small><svg class="pencil-arrow process-heading-arrow" viewBox="0 0 20 36" aria-hidden="true"><use href="#arrow-down"/></svg></h3>
-              <img class="process-drawing" src="assets/hero-process-prototype.webp" alt="" width="1024" height="1536" decoding="async"><svg class="pencil-arrow process-connector" viewBox="0 0 36 20" aria-hidden="true"><use href="#arrow-right"/></svg><p>Показываем экраны<br>до начала<br>разработки.</p>
-            </li>
-            <li class="process-step"><h3>3. РАЗРАБОТКА<svg class="pencil-arrow process-heading-arrow" viewBox="0 0 20 36" aria-hidden="true"><use href="#arrow-down"/></svg></h3>
-              <img class="process-drawing" src="assets/hero-process-development.webp" alt="" width="1024" height="1536" decoding="async"><svg class="pencil-arrow process-connector" viewBox="0 0 36 20" aria-hidden="true"><use href="#arrow-right"/></svg><p>Пишем код,<br>связываем системы,<br>проверяем в деле.</p>
-            </li>
-            <li class="process-step"><h3>4. <mark>ЗАПУСК<br>И ПЕРЕДАЧА</mark><svg class="pencil-arrow process-heading-arrow" viewBox="0 0 20 36" aria-hidden="true"><use href="#arrow-down"/></svg></h3>
-              <img class="process-drawing" src="assets/hero-process-launch.webp" alt="" width="1448" height="1086" decoding="async"><p>Запускаем сервис<br>и показываем,<br>как с ним работать.</p>
-            </li>
-          </ol>
-          <div class="process-route" aria-hidden="true"><svg viewBox="0 0 560 50"><path d="M50 5C85 43 210 49 360 4m-11-1 13-1-7 10"/><path opacity=".3" stroke-width=".8" d="M51 7C87 44 209 47 359 5m-9-1 10-1-5 9"/></svg><p>ВЫ ВИДИТЕ ПРОГРЕСС НА КАЖДОМ ЭТАПЕ</p></div>
+        <div class="hero-visual">
+          <figure class="approved-art" id="process" aria-label="От идеи к продукту: набросок бизнес-процесса на салфетке, прототип, код с помощью ИИ и сервис на ноутбуке."><img src="assets/hero-approved-art.jpg" width="605" height="628" alt="Идея → прототип → код → жизнь" decoding="async" fetchpriority="high">
+          </figure>
+          <div class="proof-group">
+            <p class="proof-label"><span class="visually-hidden">✓ реализовано</span><img src="assets/hero-approved-realized.jpg" width="426" height="61" alt="" decoding="async"></p>
+            <article class="proof-card" aria-labelledby="proof-title">
+              <img class="proof-thumb" src="assets/live-translator.png" alt="Исходный экран Live Translator" width="700" height="1537" loading="eager">
+              <div class="proof-copy"><h2 id="proof-title">Live Translator</h2><p>Перевод речи в реальном времени</p><div class="proof-actions"><a class="proof-link" href="https://livetranslator.anytoolai.store/" target="_blank" rel="noopener noreferrer">Посмотреть в работе <span aria-hidden="true">↗</span></a><a class="proof-link proof-link-other" href="#projects">К другим проектам <span aria-hidden="true">↓</span></a></div></div>
+            </article>
+          </div>
         </div>
       </section>
 

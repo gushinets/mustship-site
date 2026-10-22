@@ -355,3 +355,108 @@ dialog::backdrop { background: #0c171bb8; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; }
 }
+
+/* Approved first screen, 22 October 2026. Scoped to the header and hero. */
+.header-approved, .hero-approved { --green: #107038; --muted: #626660; }
+html { scrollbar-width: auto; }
+.header-approved a:focus-visible, .hero-approved a:focus-visible { outline-color: var(--green); }
+.header-approved nav a:hover { color: var(--green); }
+.header-approved .button:hover, .hero-approved .button:hover { border-color: var(--green); }
+.sheet { max-width: 1440px; }
+.header-approved { height: auto; display: flex; align-items: center; justify-content: space-between; gap: 26px; padding: 20px 40px 12px; }
+.header-approved .brand-approved { position: static; flex: 0 0 250px; width: 250px; height: auto; overflow: visible; }
+.brand-art { position: relative; display: block; height: 60px; width: 250px; overflow: hidden; }
+.brand-approved .brand-art img { position: absolute; width: 163%; height: auto; left: 50%; top: 50%; transform: translate(-49%, -50%); }
+.brand-descriptor { display: block; text-align: center; font: 400 16px/1.2 'Nunito', sans-serif; letter-spacing: -.25px; }
+.header-approved nav { position: static; display: flex; flex: 1; justify-content: center; gap: clamp(18px, 2.6vw, 38px); font-size: 15px; line-height: 1.3; font-weight: 600; color: var(--ink); }
+.header-approved nav a { display: flex; align-items: center; min-height: 44px; }
+.header-approved .header-cta { position: static; width: auto; min-height: 52px; padding: 13px 16px; font-size: 16px; gap: 14px; border-radius: 7px 9px 5px 7px; background: #282c2e url('assets/hero-graphite-fill.svg'); }
+.header-approved .pencil-arrow, .hero-approved .pencil-arrow { color: var(--green); width: 32px; height: 21px; filter: none; }
+.hero-approved { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.06fr); align-items: start; gap: 18px; padding: 18px 40px 40px; background: transparent; }
+.hero-approved::before { display: none; }
+.hero-approved .hero-main { padding-top: 18px; }
+.hero-approved .hero-title { width: calc(100% + 18px); height: auto; margin-left: -12px; aspect-ratio: 600 / 194; }
+.approved-title { width: 100%; height: auto; display: block; mix-blend-mode: multiply; }
+.hero-approved .hero-title::after { bottom: -9px; left: 2%; right: 3%; height: 3px; background: var(--green); border-radius: 60% 30% 65% 30%; transform: rotate(-1.2deg); }
+.hero-approved .hero-copy, .hero-outcome { font: 400 clamp(17px, 1.75vw, 23px)/1.42 'Nunito', sans-serif; letter-spacing: -.3px; color: var(--ink); }
+.hero-approved .hero-copy { margin-top: 32px; max-width: none; }
+.hero-outcome { margin-top: 20px; }
+.hero-approved .hero-actions { width: 100%; max-width: none; justify-content: center; gap: 16px; margin-top: 28px; }
+.hero-approved .hero-actions .button { width: auto; min-width: 0; min-height: 54px; padding: 13px 18px; font: 400 18px/1.2 'Nunito', sans-serif; border-radius: 6px 5px 7px 4px; }
+.hero-approved .hero-actions .primary { color: #f4f5ee; background: #282c2e url('assets/hero-graphite-fill.svg'); gap: 16px; }
+.hero-approved .primary::before { display: none; }
+.hero-approved .hero-actions .secondary { color: var(--ink); }
+.hero-approved .secondary:hover { background: #1070380c; }
+.hero-approved .hero-actions .button::after { border-color: var(--ink); }
+.hero-helper { position: relative; width: fit-content; max-width: calc(100% - 32px); margin: 18px auto 0; text-align: center; font: 400 16px/1.35 'Nunito', sans-serif; letter-spacing: -.2px; }
+.hero-helper::before, .hero-helper::after { content: ''; position: absolute; top: 9px; width: 13px; height: 15px; border-top: 1.5px solid var(--green); border-bottom: 1.5px solid var(--green); transform: rotate(25deg); }
+.hero-helper::before { left: -25px; }.hero-helper::after { right: -25px; transform: rotate(-25deg); }
+.hero-approved .benefits { width: 100%; max-width: none; grid-template-columns: 1fr 1fr 1.12fr 1fr; gap: 16px; margin-top: 34px; font: 400 16px/1.28 'Nunito', sans-serif; }
+.hero-approved .benefits li { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.hero-approved .benefits li > span { display: block; }
+.hero-approved .benefits .sketch-art { width: 56px; height: 56px; margin-bottom: 12px; stroke: var(--ink); filter: none; stroke-width: 1.4; }
+.hero-approved .sketch-accent { stroke: var(--green); }
+.hero-visual { min-width: 0; }
+.approved-art { width: calc(100% - 56px); max-width: 545px; margin: -8px auto -2px; scroll-margin-top: 16px; }
+.approved-art > img { display: block; width: 100%; height: auto; mix-blend-mode: multiply; }
+.proof-group { margin: -1px 5px 0 16px; }
+.proof-label { width: 81%; max-width: 460px; margin: 0 0 0 14px; }
+.proof-label img { display: block; width: 100%; height: auto; mix-blend-mode: multiply; }
+.proof-card { position: relative; display: flex; align-items: center; gap: 24px; min-height: 122px; padding: 12px 22px; border: 1px solid #626660; border-radius: 2px 5px 3px 6px; }
+.proof-card::before { content: ''; position: absolute; pointer-events: none; inset: 3px -3px -3px 3px; border: 1px solid #62666055; border-radius: inherit; transform: rotate(-.5deg); }
+.proof-thumb { display: block; flex: 0 0 102px; width: 102px; height: 102px; border: 3px solid var(--ink); border-radius: 7px; object-fit: cover; object-position: center; }
+.proof-copy { min-width: 0; }
+.proof-copy h2 { font: 700 24px/1.2 'Nunito', sans-serif; letter-spacing: -.6px; }
+.proof-copy p { margin-top: 3px; font-size: 18px; line-height: 1.3; }
+.proof-actions { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 20px; margin-top: 6px; }
+.proof-link { display: inline-flex; align-items: center; gap: 5px; min-height: 36px; padding: 5px 0; margin: 0; background: transparent; border: 0; border-radius: 0; color: var(--green); font: 400 18px/1.4 'Nunito', sans-serif; text-align: left; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.proof-link-other { color: var(--ink); font-size: 16px; text-decoration-color: #62666080; }
+.proof-link-other:hover { color: var(--green); text-decoration-color: currentColor; }
+@media (min-width: 1441px) { .hero-approved .hero-copy, .hero-outcome { font-size: 24px; } }
+@media (max-width: 1150px) and (min-width: 901px) {
+  .header-approved { gap: 18px; padding-inline: 28px; }.header-approved .brand-approved { flex-basis: 220px; width: 220px; }.brand-art { width: 220px; height: 67px; }.brand-descriptor { font-size: 15px; }
+  .header-approved nav { gap: 14px; font-size: 14px; }.header-approved .header-cta { font-size: 14px; padding-inline: 12px; }.header-approved .header-cta .pencil-arrow { width: 25px; }
+  .hero-approved { padding-inline: 32px; gap: 12px; }.hero-approved .hero-main { padding-top: 22px; }.hero-approved .hero-actions { gap: 12px; }.hero-approved .hero-actions .button { font-size: 15px; padding-inline: 12px; }.hero-approved .benefits { font-size: 14px; gap: 10px; }.hero-helper { font-size: 14px; }
+  .proof-card { padding: 10px 14px; gap: 16px; }.proof-thumb { width: 80px; height: 92px; flex-basis: 80px; }.proof-copy h2 { font-size: 21px; }.proof-copy p, .proof-link { font-size: 16px; }
+}
+@media (max-width: 900px) {
+  .header-approved { padding: 14px 24px 0; gap: 12px; flex-wrap: wrap; }.header-approved .brand-approved { flex-basis: 210px; width: 210px; }.brand-art { width: 210px; height: 60px; }.brand-descriptor { font-size: 14px; }
+  .header-approved nav { flex: 1 0 100%; order: 3; justify-content: space-between; gap: 10px; padding-block: 4px; font-size: 14px; line-height: 1.3; }.header-approved nav a { min-width: 0; }
+  .hero-approved { grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr); padding: 20px 24px 32px; gap: 18px; }.hero-approved .hero-main { width: 100%; max-width: none; padding-top: 0; }.hero-approved .hero-title { max-width: none; }.hero-approved .hero-copy, .hero-outcome { font-size: 17.5px; }.hero-approved .hero-copy { margin-top: 25px; }.hero-outcome { margin-top: 16px; }
+  .hero-approved .hero-actions { gap: 10px; margin-top: 23px; }.hero-approved .hero-actions .button { flex: 1; font-size: 12.5px; min-height: 48px; padding-inline: 8px; }.hero-approved .hero-actions .primary { gap: 5px; }.hero-approved .hero-actions .pencil-arrow { width: 22px; height: 18px; }.hero-helper { font-size: 12.5px; margin-top: 14px; }.hero-helper::before { left: -19px; }.hero-helper::after { right: -19px; }.hero-helper::before, .hero-helper::after { width: 9px; height: 12px; }
+  .hero-approved .benefits { grid-template-columns: 1fr 1fr 1.2fr 1fr; font-size: 12px; gap: 8px; margin-top: 24px; }.hero-approved .benefits .sketch-art { width: 40px; height: 40px; margin-bottom: 10px; }
+  .hero-visual { width: 100%; min-width: 0; }.approved-art { width: 100%; max-width: none; margin: -8px 0 -2px; }.proof-group { margin-inline: 0; }.proof-label { width: 94%; margin-left: 0; }.proof-card { min-height: 126px; padding: 12px; gap: 12px; }.proof-thumb { flex-basis: 64px; width: 64px; height: 86px; border-width: 2px; }.proof-copy h2 { font-size: 20px; }.proof-copy p, .proof-link { font-size: 14px; }.proof-actions { column-gap: 14px; }
+}
+@media (min-width: 601px) and (max-width: 720px) { .hero-approved .benefits { grid-template-columns: 1fr 1.15fr; gap: 16px 12px; font-size: 13px; } }
+@media (max-width: 600px) {
+  .hero-approved { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); grid-template-areas: 'title title' 'copy copy' 'outcome art' 'actions actions' 'helper helper' 'benefits benefits' 'proof proof'; gap: 0 16px; padding: 16px 22px 32px; }
+  .hero-approved .hero-main, .hero-approved .hero-visual { display: contents; }
+  .hero-approved .hero-title { grid-area: title; width: calc(100% + 14px); margin: 0 0 27px -7px; }
+  .hero-approved .hero-copy { grid-area: copy; margin: 0 0 16px; font-size: 18px; line-height: 1.44; letter-spacing: -.15px; }
+  .hero-approved .hero-outcome { grid-area: outcome; margin: 0; align-self: center; font-size: 18px; line-height: 1.44; letter-spacing: -.15px; }
+  .desktop-break { display: none; }
+  .hero-approved .approved-art { grid-area: art; width: 100%; max-width: 200px; margin: 0; justify-self: end; align-self: center; }
+  .hero-approved .hero-actions { grid-area: actions; gap: 10px; margin-top: 20px; }.hero-approved .hero-actions .button { font-size: 14px; min-height: 50px; padding: 10px 8px; }
+  .hero-approved .hero-helper { grid-area: helper; font-size: 13px; max-width: calc(100% - 28px); margin: 16px auto 0; }
+  .hero-approved .benefits { grid-area: benefits; font-size: 12.5px; margin-top: 24px; }.hero-approved .benefits .sketch-art { width: 43px; height: 43px; }
+  .hero-approved .proof-group { grid-area: proof; margin: 24px 0 0; }.proof-label { width: 85%; margin-left: 4px; }.proof-card { padding: 11px 12px; gap: 14px; min-height: 114px; }.proof-thumb { flex-basis: 77px; width: 77px; height: 90px; }.proof-copy h2 { font-size: 20px; }.proof-copy p, .proof-link { font-size: 14px; }
+}
+@media (max-width: 540px) {
+  .header-approved { padding: 12px 18px 0; column-gap: 12px; row-gap: 9px; }.header-approved .brand-approved { flex-basis: 192px; width: 192px; }.brand-art { width: 192px; height: 59px; }.brand-descriptor { font-size: 13.1px; line-height: 1.2; letter-spacing: -.1px; }
+  .header-approved .header-cta { min-height: 44px; max-width: 128px; padding: 8px 11px; font-size: 13px; line-height: 1.2; white-space: normal; gap: 5px; }.header-approved .header-cta .pencil-arrow { width: 23px; height: 18px; }
+  .header-approved nav { font-size: 12px; gap: 8px; padding: 0; }.header-approved nav a { min-height: 44px; }
+  .hero-approved .hero-actions .pencil-arrow { width: 24px; height: 18px; }
+  .hero-approved .benefits { gap: 9px; }.hero-approved .benefits .sketch-art { margin-bottom: 9px; }
+  .proof-copy h2 { letter-spacing: -.4px; }
+}
+@media (max-width: 360px) {
+  .header-approved { padding-inline: 14px; gap: 6px; }.header-approved .brand-approved { flex-basis: 177px; width: 177px; }.brand-art { width: 177px; height: 54px; }.brand-descriptor { font-size: 12px; }.header-approved .header-cta { max-width: 111px; padding-inline: 7px; font-size: 12px; }.header-approved .header-cta .pencil-arrow { width: 18px; }.header-approved nav { gap: 5px; font-size: 11.5px; }
+  .hero-approved { padding-inline: 18px; column-gap: 12px; }.hero-approved .hero-copy, .hero-approved .hero-outcome { font-size: 17px; }.hero-approved .hero-actions .button { font-size: 15px; }.hero-approved .hero-actions .pencil-arrow { width: 24px; }.hero-approved .hero-helper { font-size: 12px; }.hero-approved .benefits { grid-template-columns: 1fr 1.12fr; gap: 18px 12px; font-size: 13px; }.hero-approved .benefits li { gap: 8px; }.hero-approved .benefits .sketch-art { flex-shrink: 0; width: 35px; height: 35px; margin: 0; }.proof-card { gap: 11px; }.proof-thumb { flex-basis: 68px; width: 68px; height: 85px; }.proof-copy h2 { font-size: 18px; }.proof-copy p, .proof-link { font-size: 13px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+@media (max-width: 340px) {
+  .header-approved .brand-approved { flex-basis: 160px; width: 160px; }.brand-art { width: 160px; height: 49px; }.brand-descriptor { font-size: 11.4px; }
+}
+
+/* Raster exports already use the exact paper background. */
+.hero-approved .approved-title, .hero-approved .approved-art > img, .hero-approved .proof-label img { mix-blend-mode: normal; }
