@@ -85,10 +85,10 @@ ul { padding: 0; list-style: none; }
 .services-title::after { inset: 0 auto auto 0; width: 104.35%; height: 110.43%; background: #107038; border-radius: 0; mask: url('assets/services-title-underline.svg') 0 0 / 100% 100% no-repeat; transform: none; pointer-events: none; }
 .services-intro { font-size: clamp(20px, 1.65vw, 24px); font-weight: 600; line-height: 1.45; color: #282c2e; }
 .services-intro span { display: block; }
-.services-grid { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
+.services-grid { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
 .sketch-box { position: relative; border: calc(1 * var(--u)) solid #a2a59e; box-shadow: calc(-2 * var(--u)) calc(2 * var(--u)) 0 #81857d44, calc(2 * var(--u)) calc(-1 * var(--u)) 0 #95978d22; }
 .sketch-box::after { content: ''; position: absolute; inset: calc(2 * var(--u)); border: calc(.8 * var(--u)) solid #92988b77; pointer-events: none; transform: rotate(.5deg); filter: url(#pencil); }
-.service { isolation: isolate; min-width: 0; padding: 18px 16px; border-color: transparent; box-shadow: none; }
+.service { flex: 0 1 260px; isolation: isolate; min-width: 0; padding: 18px 16px; border-color: transparent; box-shadow: none; }
 .service::before { content: ''; position: absolute; inset: -2px; opacity: .42; background: url('assets/service-pencil-frame.svg') center / 100% 100% no-repeat; pointer-events: none; }
 .service::after { display: none; }
 .service-copy { position: relative; z-index: 2; min-width: 0; text-shadow: 0 0 2px var(--paper), 0 0 5px var(--paper); }
@@ -109,7 +109,7 @@ ul { padding: 0; list-style: none; }
   .service:nth-child(4) h3 { font-size: clamp(19.5px, 1.55vw, 23px); white-space: nowrap; }
 }
 @media (max-width: 1179px) {
-  .services-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .services-grid { gap: 20px; }
   .service { padding-left: 22px; padding-right: 22px; }
   .service h3 { font-size: 24px; }
   .service p { font-size: 18px; }
@@ -118,9 +118,6 @@ ul { padding: 0; list-style: none; }
   .services { grid-template-columns: 1fr; gap: 26px; padding: 34px 24px 38px; }
   .services-title { width: min(100%, 360px); }
   .services-intro { font-size: 20px; }
-}
-@media (max-width: 960px) {
-  .services-grid { grid-template-columns: minmax(0, 420px); justify-content: center; }
 }
 @media (max-width: 540px) {
   .services { padding: 30px 20px 34px; }
