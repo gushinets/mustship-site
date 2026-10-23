@@ -19,7 +19,9 @@ async (page) => {
   check(await page.locator('.hero-title, .services-title, .projects-title, .team-title, .contact-title, .hand-note').evaluateAll((elements) => elements.every((el) => el.textContent.trim() && getComputedStyle(el).backgroundImage === 'none')), 'Надписи должны отображаться текстом, без растрового фона');
   check(await page.locator('#process > img').count() === 1 && await page.locator('#process > img').evaluate(image => image.complete && image.naturalWidth > 0), 'Единая иллюстрация разработки не загрузилась');
   check(await page.locator('.proof-actions a').count() === 2 && await page.locator('.proof-actions a').first().getAttribute('href') === 'https://livetranslator.anytoolai.store/', 'Ссылка на работающий переводчик не подключена');
-  check(await page.locator('.service').evaluateAll(cards => cards.every(card => card.querySelector('svg.service-drawing'))), 'У каждой услуги должна быть векторная иллюстрация');
+  check(await page.locator('.service').count() === 5, 'Должно быть пять услуг');
+  check(await page.locator('.service').evaluateAll(cards => cards.every(card => { const image = card.querySelector('img.service-drawing'); return image && image.complete && image.naturalWidth > 0; })), 'У каждой услуги должна загрузиться согласованная иллюстрация');
+  check(await page.locator('.services-title').evaluate(el => getComputedStyle(el, '::after').backgroundColor === 'rgb(16, 112, 56)'), 'Подчёркивание должно быть чистым зелёным #107038');
   await page.screenshot({ path: 'output/playwright/desktop-977.png', fullPage: true, scale: 'css' });
 
   const cards = page.locator('[data-project]');
@@ -49,7 +51,7 @@ async (page) => {
   check(await page.evaluate(() => window.getSelection().toString()) === 'MustShip.gushinets@gmail.com', 'Резервное выделение email не работает');
   await page.evaluate(() => { navigator.clipboard.writeText = window.savedClipboardWrite; window.getSelection().removeAllRanges(); });
 
-  const sizes = [[320, 740], [360, 800], [375, 812], [390, 844], [430, 932], [521, 900], [600, 900], [768, 1024], [844, 390], [932, 430], [978, 775], [1320, 775], [1440, 900]];
+  const sizes = [[320, 740], [360, 800], [375, 812], [390, 844], [430, 932], [540, 900], [541, 900], [600, 900], [768, 1024], [844, 390], [932, 430], [960, 900], [961, 900], [978, 775], [1179, 900], [1180, 900], [1320, 775], [1440, 900]];
   const responsive = [];
   for (const [width, height] of sizes) {
     await page.setViewportSize({ width, height });
@@ -73,7 +75,7 @@ async (page) => {
         teamFont: parseFloat(getComputedStyle(document.querySelector('.member-copy')).fontSize),
         targets: [...document.querySelectorAll('.header a, .hero-actions a, .copy-email')].every((el) => { const r = el.getBoundingClientRect(); return r.width >= 43.5 && r.height >= 43.5; }),
         clipped: [...document.querySelectorAll('.hand-title, .service p, .service h3, .member h3, .member-copy, .email-strip')].filter((el) => el.scrollWidth > el.clientWidth + 1).map((el) => el.className),
-        overlapping: [...document.querySelectorAll('.service')].some((el) => el.querySelector('p').getBoundingClientRect().bottom > el.querySelector('.service-drawing').getBoundingClientRect().top + 2),
+        overlapping: [...document.querySelectorAll('.service')].some((el) => { const text = el.querySelector('.service-copy').getBoundingClientRect(); const art = el.querySelector('.service-drawing').getBoundingClientRect(); return text.left < art.right - 1 && text.right > art.left + 1 && text.top < art.bottom - 1 && text.bottom > art.top + 1; }),
         contrast: [...document.querySelectorAll('.service p, .member-copy, .team-intro, .contact-checklist ul, .skills')].every((el) => contrast(getComputedStyle(el).color, paper) >= 4.5) && contrast(cta.color, cta.backgroundColor) >= 4.5,
         };
       });
