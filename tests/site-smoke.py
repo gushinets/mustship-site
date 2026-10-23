@@ -24,7 +24,7 @@ class Page(HTMLParser):
 
 page = Page()
 page.feed((root / "index.html").read_text(encoding="utf-8"))
-assert {"main", "services", "projects", "process", "team", "contact", "project-dialog"} <= page.ids
+assert {"main", "services", "projects", "process", "team", "contact", "project-panel", "image-dialog"} <= page.ids
 assert "mailto:MustShip.gushinets@gmail.com" in page.links
 for link in page.links:
     if link.startswith("#"):
@@ -36,9 +36,21 @@ for name in page.files:
     if resource.path == "styles.css":
         version = sha256((root / resource.path).read_text(encoding="utf-8").encode("utf-8")).hexdigest()[:12]
         assert parse_qs(resource.query).get("v") == [version], "update styles.css?v= to the first 12 SHA256 characters"
-for css in (root / "styles.css", root / "assets/fonts.css"):
+for css in (root / "styles.css", root / "projects.css", root / "assets/fonts.css"):
     for reference in re.findall(r"""url\((?:'[^']*'|"[^"]*"|[^)]*)\)""", css.read_text(encoding="utf-8")):
         resource = reference[4:-1].strip("'\" ")
         if not resource.startswith(("data:", "#")):
             assert (css.parent / resource).is_file(), f"missing CSS resource: {resource}"
+html = (root / "index.html").read_text(encoding="utf-8")
+assert html.index('role="tablist"') < html.index('id="project-panel"'), "project tabs must precede the panel"
+assert len(re.findall(r'role="tab"', html)) == 6, "expected six project tabs"
+assert 'id="project-dialog"' not in html, "old project modal must be removed"
+assert 'Это прототип' not in html, "prototype contact must not be published"
+for resource in ("projects.css", "projects.js", "app.js"):
+    version = sha256((root / resource).read_bytes()).hexdigest()[:12]
+    assert f'{resource}?v={version}' in html, f"update cached resource version: {resource}"
+for filename in re.findall(r"\['([^']+\.png)',", (root / "projects.js").read_text(encoding="utf-8")):
+    assert (root / "assets/projects" / filename).is_file(), f"missing gallery image: {filename}"
+for control in ("discuss", "discuss-other"):
+    assert re.search(r'<a\b[^>]*id="' + control + r'"[^>]*href="#contact"', html), f"missing contact path: {control}"
 print("site-smoke: PASS")

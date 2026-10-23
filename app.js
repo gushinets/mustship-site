@@ -1,31 +1,4 @@
-const dialog = document.querySelector('#project-dialog');
-
-document.querySelectorAll('[data-project]').forEach((card) => {
-  card.addEventListener('click', () => {
-    document.querySelector('#dialog-title').textContent = card.dataset.project;
-    document.querySelector('#dialog-headline').textContent = card.dataset.headline;
-    document.querySelector('#dialog-description').textContent = card.dataset.description;
-    const demo = dialog.querySelector('.dialog-demo');
-    demo.hidden = !card.dataset.demo;
-    demo.querySelector('a').href = card.dataset.demo || '#';
-    const benefits = card.dataset.benefits.split('|').map((benefit) => {
-      const item = document.createElement('li');
-      item.textContent = benefit;
-      return item;
-    });
-    document.querySelector('#dialog-benefits').replaceChildren(...benefits);
-    document.querySelector('#dialog-outcome').textContent = card.dataset.outcome;
-    dialog.querySelector('.dialog-cta-label').textContent = card.dataset.cta;
-    dialog.querySelector('.dialog-cta').href = `mailto:MustShip.gushinets@gmail.com?subject=${encodeURIComponent(`Хочу похожее решение: ${card.dataset.project}`)}`;
-    dialog.showModal();
-  });
-});
-
-dialog.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
-dialog.addEventListener('click', (event) => {
-  if (event.target === dialog) dialog.close();
-});
-
+'use strict';
 let toastTimer;
 document.querySelector('.copy-email').addEventListener('click', async () => {
   const toast = document.querySelector('.toast');

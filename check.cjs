@@ -29,15 +29,21 @@ async (page) => {
   for (let i = 0; i < 6; i++) {
     const card = cards.nth(i);
     await card.click();
-    check(await page.locator('#project-dialog').isVisible(), 'Описание проекта не открылось');
-    check(await page.locator('#dialog-title').textContent() === await card.getAttribute('data-project'), 'Открыт другой проект');
-    await page.keyboard.press('Escape');
-    check(!await page.locator('#project-dialog').isVisible(), 'Escape не закрывает диалог');
-    check(await card.evaluate((el) => document.activeElement === el), 'Фокус не вернулся к карточке');
+    check(await page.locator('#project-panel').getAttribute('aria-labelledby') === await card.getAttribute('id'), 'Открыт другой проект');
+    check(await card.getAttribute('aria-selected') === 'true', 'Выбор проекта не объявлен');
+    if (await page.locator('#screen-open').isVisible()) {
+      await page.locator('#screen-open').click();
+      check(await page.locator('#image-dialog').isVisible(), 'Экран проекта не открылся');
+      await page.keyboard.press('Escape');
+      check(!await page.locator('#image-dialog').isVisible(), 'Escape не закрывает экран');
+      check(await page.locator('#screen-open').evaluate((el) => document.activeElement === el), 'Фокус не вернулся к экрану');
+    }
   }
   await cards.first().click();
-  await page.getByRole('button', { name: 'Закрыть описание проекта' }).click();
-  check(!await page.locator('#project-dialog').isVisible(), 'Кнопка закрытия не работает');
+  await page.locator('#screen-open').click();
+  await page.getByRole('button', { name: 'Закрыть изображение' }).click();
+  check(!await page.locator('#image-dialog').isVisible(), 'Кнопка закрытия не работает');
+  check(await page.locator('#discuss').getAttribute('href') === '#contact' && await page.locator('#discuss-other').getAttribute('href') === '#contact', 'Кнопки обсуждения должны вести к контактам');
   await page.getByRole('navigation').getByRole('link', { name: 'Контакты' }).click();
   check(new URL(page.url()).hash === '#contact', 'Навигация к контактам не работает');
 
@@ -85,9 +91,10 @@ async (page) => {
       check(mobile.clipped.length === 0, `Обрезанный текст на ширине ${width}: ${mobile.clipped}`);
       check(mobile.artworkSafe, `Рисунок выходит из карточки или перекрывает слой текста на ширине ${width}`);
       await cards.nth(1).click();
-      check(await page.locator('#project-dialog').isVisible(), `Диалог не открывается на ширине ${width}`);
-      check(await page.locator('#project-dialog').evaluate((el) => el.scrollWidth <= el.clientWidth + 1), `Диалог переполнен на ширине ${width}`);
-      await page.getByRole('button', { name: 'Закрыть описание проекта' }).click();
+      await page.locator('#screen-open').click();
+      check(await page.locator('#image-dialog').isVisible(), `Экран не открывается на ширине ${width}`);
+      check(await page.locator('#image-dialog').evaluate((el) => el.scrollWidth <= el.clientWidth + 1), `Экран переполнен на ширине ${width}`);
+      await page.getByRole('button', { name: 'Закрыть изображение' }).click();
       await page.evaluate(() => window.scrollTo(0, 0));
     }
     responsive.push({ width, height, overflow });

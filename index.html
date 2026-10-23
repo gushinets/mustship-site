@@ -9,7 +9,9 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/fonts.css">
   <link rel="stylesheet" href="styles.css?v=2b146ce0ebea">
-  <script src="app.js?v=067c96ec9178" defer></script>
+  <link rel="stylesheet" href="projects.css?v=93c72bbe333e">
+  <script src="projects.js?v=f7259c16c76e" defer></script>
+  <script src="app.js?v=f4d5e3f42f3c" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -83,107 +85,68 @@
         </div>
       </section>
 
-      <section class="projects" id="projects" aria-labelledby="projects-title">
-        <h2 class="projects-title hand-title" id="projects-title">Наши проекты</h2>
-        <p class="projects-intro">Вот как это работает на практике. <br>Откройте кейс и посмотрите, что можно применить у вас.</p>
-        <span class="hand-note projects-note" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M35 7Q12 8 8 32m-2-9 2 10 9-6"/></svg><span>УЖЕ<br>РЕАЛИЗОВАНО</span></span>
-        <div class="projects-grid">
-          <div class="project-item">
-            <button class="project-card" type="button" data-project="ScopeCreepGuard" data-headline="Хватит делать «ещё одну правку» бесплатно." data-description="«Это же маленькая правка» легко превращается в работу, которую никто не оплатил. Сервис сравнивает пожелания клиента с согласованным объёмом и помогает вовремя обозначить границы." data-benefits="Отделяйте новые пожелания от того, что уже согласовано.|Разбирайтесь, где меняется объём работ и почему.|Готовьте аргументированный ответ клиенту вместо спора на эмоциях." data-outcome="Понятные аргументы, чтобы согласовать дополнительные работы и защитить бюджет проекта." data-cta="Хочу защитить бюджет проекта" aria-label="Подробнее о ScopeCreepGuard">
-              <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i><span>⌘</span></span>
-              <span class="project-name">ScopeCreepGuard <svg class="pencil-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#arrow-diagonal"/></svg></span>
-              <span class="project-description">Правки — под контроль.<br>Бюджет — под защиту.</span>
-              <code class="project-code">// анализ задач <br>// поиск scope creep <br>// умные рекомендации</code>
-              <span class="project-preview mini-tasks" role="img" aria-label="Эскиз интерфейса контроля задач" style="--w:164;--h:121"><span><i class="mini-avatar"></i>Анализ задачи</span><span><i class="mini-avatar"></i>Новое дело <b>Ready to merge</b></span><span><i class="mini-avatar"></i>Приоритет <em>В работе</em></span><span><i class="mini-avatar"></i>Готово <em>Готово</em></span></span>
-              <span class="tags"><span>AI</span><span>Productivity</span><span>Web</span></span>
-            </button>
-            <p class="project-caption"><svg viewBox="0 0 30 40" aria-hidden="true"><path d="M26 36C10 35 5 24 9 8m-6 6 7-8 5 9"/></svg>Берегите бюджет,<br>а не чужие хотелки</p>
-          </div>
-          <div class="project-item">
-            <button class="project-card" type="button" data-project="PromptEngineerBot" data-headline="AI снова отвечает «не то»? Начните с точного запроса." data-description="Вам не нужно становиться промпт-инженером, чтобы поручить AI рабочую задачу. Telegram-помощник превращает короткую идею в подробное задание с контекстом, ограничениями и нужным форматом ответа." data-benefits="Начинайте с обычного описания задачи — без сложных формул.|Уточняйте, что должен знать AI и каким должен быть ответ.|Получайте готовый промпт, который можно использовать в работе." data-outcome="Меньше догадок при постановке задачи. Больше контроля над тем, что вы поручаете AI." data-cta="Хочу такого AI-помощника" aria-label="Подробнее о PromptEngineerBot">
-              <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i><span>⌘</span></span>
-              <span class="project-name">PromptEngineerBot <svg class="pencil-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#arrow-diagonal"/></svg></span>
-              <span class="project-description">Опишите задачу —<br>получите запрос для AI.</span>
-              <code class="project-code cyan">def improve_prompt(): <br>    analyse() <br>    optimize() <br>    return better_results</code>
-              <span class="project-preview mini-chat" role="img" aria-label="Эскиз диалога с помощником" style="--w:161;--h:117"><span><i class="mini-avatar"></i><span class="mini-bubble"><i></i><i></i></span></span><span class="mini-message"></span><span><i class="mini-avatar"></i><span class="mini-bubble"><i></i><i></i></span></span></span>
-              <span class="tags"><span>AI</span><span>Chatbot</span><span>Tools</span></span>
-            </button>
-            <p class="project-caption"><svg viewBox="0 0 30 40" aria-hidden="true"><path d="M26 36C10 35 5 24 9 8m-6 6 7-8 5 9"/></svg>Меньше попыток.<br>Больше пользы.</p>
-          </div>
-          <div class="project-item">
-            <button class="project-card" type="button" data-project="PromptOptimizer" data-headline="Не пишите удачный промпт заново. Используйте его снова." data-description="Хороший запрос не должен теряться в переписке. Браузерное расширение помогает дорабатывать промпты под вашу цель и аудиторию и сохранять удачные варианты для следующих задач." data-benefits="Улучшайте формулировку под конкретную цель и аудиторию.|Сохраняйте удачные запросы вместо того, чтобы начинать с нуля.|Возвращайтесь к подготовленным промптам в привычном браузере." data-outcome="Ваши удачные находки превращаются в рабочий набор промптов, к которому можно возвращаться." data-cta="Хочу упростить работу с AI" aria-label="Подробнее о PromptOptimizer">
-              <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i><span>⌘</span></span>
-              <span class="project-name">PromptOptimizer <svg class="pencil-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#arrow-diagonal"/></svg></span>
-              <span class="project-description">Улучшайте промпты.<br>Сохраняйте удачные.</span>
-              <code class="project-code cyan">{ <br>  'clarity': 0.92, <br>  'structure': 0.87, <br>  'suggestions': [...] <br>}</code>
-              <span class="project-preview mini-score" role="img" aria-label="Эскиз оценки качества промпта: 92 из 100" style="--w:154;--h:114"><span class="mini-score-total">Качество <strong>92<small>/100</small></strong></span><span>Ясность <i><b style="width:82%"></b></i></span><span>Структура <i><b style="width:68%"></b></i></span><span>Эффективность <i><b style="width:86%"></b></i></span></span>
-              <span class="tags"><span>AI</span><span>Analytics</span><span>SaaS</span></span>
-            </button>
-            <p class="project-caption"><svg viewBox="0 0 30 40" aria-hidden="true"><path d="M26 36C10 35 5 24 9 8m-6 6 7-8 5 9"/></svg>Сильные промпты.<br>Без рутины.</p>
-          </div>
-          <div class="project-item">
-            <button class="project-card" type="button" data-project="Live Translator" data-headline="Говорите о деле. Переводите на лету." data-description="Когда встреча идёт на другом языке, легко потерять нить разговора. Инструмент объединяет распознавание речи и перевод в реальном времени, чтобы вам было проще следить за обсуждением." data-benefits="Получайте текст сказанного во время встречи или звонка.|Следите за переводом по ходу разговора.|Работайте с распознаванием и переводом в одном интерфейсе." data-outcome="Меньше переключений между инструментами. Больше внимания самому разговору." data-cta="Хочу перевод для рабочих встреч" aria-label="Подробнее о Live Translator">
-              <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i><span>⌘</span></span>
-              <span class="project-name">Live Translator <svg class="pencil-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#arrow-diagonal"/></svg></span>
-              <span class="project-description">Разговор по делу.<br>Перевод — на лету.</span>
-              <code class="project-code">// real-time translation <br>// speech <svg class="pencil-arrow" viewBox="0 0 36 20" aria-hidden="true"><use href="#arrow-right"/></svg> text <br>// multi-language <br>// low latency</code>
-              <span class="project-preview mini-translate" role="img" aria-label="Эскиз интерфейса перевода с английского на русский" style="--w:167;--h:116"><span><b>EN</b><span>English <i>♬</i><em>Hello, how are you?</em></span></span><span><b>RU</b><span>Русский <i>♬</i><em>Привет, как дела?</em></span></span></span>
-              <span class="tags"><span>AI</span><span>Real-time</span><span>Voice</span></span>
-            </button>
-            <p class="project-caption"><svg viewBox="0 0 30 40" aria-hidden="true"><path d="M26 36C10 35 5 24 9 8m-6 6 7-8 5 9"/></svg>Общий язык —<br>с первой встречи</p>
-          </div>
-          <div class="project-item">
-            <button class="project-card" type="button" data-project="CV_screener" data-headline="Ищите подходящих людей, а не тоните в резюме." data-description="Поток откликов растёт, а время на разбор — нет. Инструмент помогает анализировать опыт кандидатов под требования вакансии и находить резюме, заслуживающие вашего внимания." data-benefits="Сопоставляйте опыт кандидатов с требованиями вакансии.|Выделяйте релевантные резюме для подробного рассмотрения.|Готовьте список для дальнейшего отбора и собеседований." data-outcome="Меньше ручного разбора на старте. Больше внимания кандидатам, подходящим под вашу задачу." data-cta="Хочу упростить разбор резюме" aria-label="Подробнее о CV_screener">
-              <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i><span>⌘</span></span>
-              <span class="project-name">CV_screener <svg class="pencil-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#arrow-diagonal"/></svg></span>
-              <span class="project-description">Меньше разбора резюме.<br>Больше внимания людям.</span>
-              <code class="project-code cyan">for cv in candidates: <br>   score = analyze(cv) <br>   rank() <br>   return best_candidates</code>
-              <span class="project-preview mini-candidates" role="img" aria-label="Эскиз списка кандидатов" style="--w:164;--h:112"><span><i class="mini-avatar"></i>Анна К.<i class="mini-progress"><b style="width:92%"></b></i><strong>92</strong></span><span><i class="mini-avatar"></i>Сергей М.<i class="mini-progress"><b style="width:78%"></b></i><strong>78</strong></span><span><i class="mini-avatar"></i>Ирина С.<i class="mini-progress"><b style="width:71%"></b></i><strong>71</strong></span></span>
-              <span class="tags"><span>AI</span><span>HR</span><span>Automation</span></span>
-            </button>
-            <p class="project-caption"><svg viewBox="0 0 30 40" aria-hidden="true"><path d="M26 36C10 35 5 24 9 8m-6 6 7-8 5 9"/></svg>От резюме —<br>к собеседованию</p>
-          </div>
-          <div class="project-item">
-            <button class="project-card" type="button" data-project="3D-модели и расчёты" data-headline="Проверьте решение до закупки и монтажа" data-description="Как разместится оборудование? Что поместится внутри? Сколько потребуется материалов? Подготовим модель с помощью ИИ, сравним варианты и выполним расчёт по согласованным исходным данным." data-benefits="Для одного проекта. Модель вашего помещения, участка или изделия с расчётом нужных параметров. Наглядная основа для выбора, обсуждения со специалистом и подготовки к реализации.|Для регулярной работы. Разработаем инструмент под задачи вашей компании. Меняйте размеры и другие параметры, получайте обновлённую модель и расчёт для следующих заказов." data-outcome="Пример: в нашем внутреннем проекте «Хозблок 3D» можно осмотреть объект снаружи и изнутри, посмотреть заезд автомобиля под навес и оставить замечание на модели. Демонстрация эскизная; замечания передаются файлом. Состав работ, стоимость и сроки определим после оценки задачи. Для инженерных вопросов заранее согласуем участие профильного специалиста." data-cta="Обсудить задачу" data-demo="https://gushinets.github.io/hozblock-3d/?roof=mono" aria-label="Подробнее о 3D-моделях и расчётах">
-              <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i><span>⌘</span></span>
-              <span class="project-name">Модели и расчёты <svg class="pencil-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#arrow-diagonal"/></svg></span>
-              <span class="project-description">Проверьте решение<br>до закупки и монтажа.</span>
-              <code class="project-code">// модель по размерам<br>// сравнение вариантов<br>// проверка размещения</code>
-              <span class="project-preview mini-model" role="img" aria-label="Эскиз интерфейса 3D-модели: хозблок с навесом, автомобиль и габариты 6 на 8 метров" style="--w:164;--h:112">
-                <svg viewBox="0 0 280 200" aria-hidden="true">
-                  <rect x="7" y="5" width="266" height="25" rx="7" fill="#eaf3fb"/>
-                  <rect x="10" y="8" width="76" height="19" rx="5" fill="#d7f4e5"/>
-                  <g font-family="Nunito, sans-serif" font-size="11" font-weight="700"><text x="21" y="21" fill="#28674e">Снаружи</text><text x="96" y="21" fill="#71889b">Внутри</text><text x="222" y="21" fill="#4f7187">6 × 8 м</text></g>
-                  <path d="m24 135 106-50 132 41-105 51Z" fill="#e8f1f9"/>
-                  <g stroke="#92aabd" stroke-width="1.4" stroke-linejoin="round">
-                    <path d="m42 78 68 20v49l-68-20Z" fill="#f8fbff"/>
-                    <path d="m110 98 49-23v49l-49 23Z" fill="#dce9f3"/>
-                    <path d="m56 91 39 11v36l-39-11Z" fill="#b7cbdd"/>
-                    <path d="m56 100 39 11m-39-2 39 11m-39-2 39 11" fill="none"/>
-                    <path d="m126 101 19-9v25l-19 9Z" fill="#a9c2d6"/>
-                  </g>
-                  <g stroke="#7e98ac" stroke-width="3.5" stroke-linecap="round"><path d="M166 113v44m82-79v43"/></g>
-                  <g stroke="#748fa5" stroke-width="1.4" stroke-linejoin="round">
-                    <path d="m178 130 27 8 26-13-27-8Z" fill="#8aa8be"/>
-                    <path d="m178 130 27 8v14l-27-8Z" fill="#536f87"/>
-                    <path d="m205 138 26-13v14l-26 13Z" fill="#6b889f"/>
-                    <path d="m186 128 9-17 24 7 5 11-19 9Z" fill="#adc7d9"/>
-                    <path d="m191 125 6-11 19 6 4 8-15 7Z" fill="#e4f3fc"/>
-                  </g>
-                  <g fill="#455e74"><ellipse cx="183" cy="145" rx="4" ry="6"/><ellipse cx="222" cy="143" rx="4" ry="6"/></g>
-                  <path d="m31 71 88-37 135 38-87 39Z" fill="#d4e3ee" stroke="#8ca5b9" stroke-width="1.5" stroke-linejoin="round"/>
-                  <path d="m31 71 136 40v7L31 78Z" fill="#6e899f"/>
-                  <path d="m167 111 87-39v7l-87 39Z" fill="#9eb5c7"/>
-                  <g fill="none" stroke="#16ba7a" stroke-width="1.8" stroke-linecap="round"><path d="m30 151 127 38m-130-34 6-8m121 46 6-8m9-1 91-43m-94 40 6 6m85-49 6 6"/></g>
-                  <g font-family="Nunito, sans-serif" font-size="12" font-weight="700" fill="#27876a"><text x="80" y="183" transform="rotate(16 80 183)">6 м</text><text x="216" y="176" transform="rotate(-25 216 176)">8 м</text></g>
-                </svg>
-              </span>
-              <span class="tags"><span>Web 3D</span><span>Three.js</span><span>Planning</span></span>
-            </button>
-            <a class="button model-link project-demo-link" href="https://gushinets.github.io/hozblock-3d/?roof=mono" target="_blank" rel="noopener noreferrer">Открыть 3D-модель <span aria-hidden="true">↗</span></a>
+      <section class="projects-showcase" id="projects" aria-labelledby="projects-title">
+    <header class="section-heading">
+      <h2 id="projects-title"><span class="sr-only">Наши проекты</span></h2>
+      <p>Посмотрите, как устроены наши решения.<br>Обсудим, что поможет Вам и вашей команде.</p>
+    </header>
+
+    <div class="project-tabs" role="tablist" aria-label="Проекты mustShip">
+      <button id="tab-translator" class="project-tab" role="tab" type="button" aria-selected="true" aria-controls="project-panel" data-project="translator"><span class="tab-art portrait"><img loading="lazy" decoding="async" src="assets/projects/translator-playing.png" alt=""></span><span class="tab-title">Перевод разговора</span><small>Live Translator</small></button>
+      <button id="tab-cv" class="project-tab" role="tab" type="button" aria-selected="false" tabindex="-1" aria-controls="project-panel" data-project="cv"><span class="tab-art"><img loading="lazy" decoding="async" src="assets/projects/cv-search.png" alt=""></span><span class="tab-title">Поиск по резюме</span><small>CV Screener</small></button>
+      <button id="tab-scope" class="project-tab" role="tab" type="button" aria-selected="false" tabindex="-1" aria-controls="project-panel" data-project="scope"><span class="tab-art"><img loading="lazy" decoding="async" src="assets/projects/scope-current-analysis.png" alt=""></span><span class="tab-title">Контроль допработ</span><small>ScopeCreepGuard</small></button>
+      <button id="tab-bot" class="project-tab" role="tab" type="button" aria-selected="false" tabindex="-1" aria-controls="project-panel" data-project="bot"><span class="tab-art bot-art" aria-hidden="true"><svg viewBox="0 0 90 65" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 10h52a6 6 0 0 1 6 6v22a6 6 0 0 1-6 6H32L19 54V44h-7a6 6 0 0 1-6-6V16a6 6 0 0 1 6-6Z"/><path d="m29 22-7 6 7 6m17-12 7 6-7 6m-8-16-4 20M72 40h8v20L67 52H45"/></svg></span><span class="tab-title">Задание для ИИ</span><small>PromptEngineerBot</small></button>
+      <button id="tab-prompt" class="project-tab" role="tab" type="button" aria-selected="false" tabindex="-1" aria-controls="project-panel" data-project="prompt"><span class="tab-art"><img loading="lazy" decoding="async" src="assets/projects/prompt-explanation.png" alt=""></span><span class="tab-title">Работа с промптами</span><small>PromptOptimizer</small></button>
+      <button id="tab-model" class="project-tab" role="tab" type="button" aria-selected="false" tabindex="-1" aria-controls="project-panel" data-project="model"><span class="tab-art"><img loading="lazy" decoding="async" src="assets/projects/model-outside.png" alt=""></span><span class="tab-title">Модели и расчёты</span><small>Хозблок 3D</small></button>
+    </div>
+    <p class="selection-status sr-only" aria-live="polite" id="selection-status"></p>
+    <div class="selector-heading"><span id="project-counter">1 из 6</span></div>
+
+    <section class="showcase" id="project-panel" role="tabpanel" aria-labelledby="tab-translator" tabindex="0">
+      <div class="project-visual">
+        <div class="project-window-bar" aria-hidden="true"><i></i><i></i><i></i><span>⌘</span></div>
+        <div class="visual-heading"><span id="project-name"></span><span id="project-type"></span></div>
+        <button class="screen" id="screen-open" type="button" aria-label="Увеличить экран проекта">
+          <img loading="lazy" decoding="async" id="project-image" src="assets/projects/translator-playing.png" alt="">
+          <span class="zoom-label">Рассмотреть экран <span aria-hidden="true">⤢</span></span>
+        </button>
+        <div class="bot-scheme" id="bot-scheme" hidden>
+          <div class="chat-top"><span class="chat-avatar">✳</span><div>PromptEngineerBot<small>Схема диалога</small></div></div>
+          <p class="chat-message outgoing">Нужен текст для страницы услуги. Хочу объяснить, чем мы помогаем клиенту.</p>
+          <p class="chat-message">Для кого эта услуга? Какую задачу клиента она решает? Что читатель должен сделать после знакомства со страницей?</p>
+          <p class="chat-message outgoing">Для владельцев небольших компаний. Помогаем связать CRM и таблицы. Хочу, чтобы написали о своей задаче.</p>
+          <div class="chat-result"><span>На выходе</span><strong>Задание для ИИ с контекстом, целью и форматом ответа</strong></div>
+        </div>
+        <div class="screen-steps" id="screen-steps" aria-label="Экраны проекта"></div>
+        <p class="screen-caption" id="screen-caption"></p>
+        <a class="demo-link" id="project-demo" target="_blank" rel="noopener noreferrer" hidden>Открыть в работе ↗</a>
+        <p class="disclosure" id="project-disclosure"></p>
+      </div>
+      <div class="project-copy">
+        <h3 id="project-title"></h3>
+        <p class="situation" id="project-situation"></p>
+        <dl class="project-facts">
+          <div><dt>Что на входе</dt><dd id="project-input"></dd></div>
+          <div><dt>Что получаем</dt><dd id="project-output"></dd></div>
+          <div><dt>В работе</dt><dd id="project-check"></dd></div>
+        </dl>
+        <div class="project-promo">
+          <p class="application" id="project-application"></p>
+          <div class="project-actions">
+            <a class="button primary" id="discuss" href="#contact">Обсудить мою задачу <span aria-hidden="true">↗</span></a>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
+
+    <footer class="section-footer"><span>У вас другая задача?</span><a class="button primary" id="discuss-other" href="#contact">Расскажите, что хотите упростить <span aria-hidden="true">↗</span></a></footer>
+
+    <dialog class="image-dialog" id="image-dialog" aria-labelledby="image-dialog-title">
+    <div class="dialog-heading"><h2 id="image-dialog-title">Экран проекта</h2><button class="close" type="button" data-close="image-dialog" aria-label="Закрыть изображение">×</button></div>
+    <img loading="lazy" decoding="async" src="assets/projects/translator-playing.png" id="expanded-image" alt="">
+    <p id="expanded-disclosure"></p>
+  </dialog>
+  </section>
 
       <section class="team" id="team" aria-labelledby="team-title">
         <h2 class="team-title hand-title" id="team-title">Наша команда</h2>
@@ -234,19 +197,6 @@
     <symbol id="arrow-down" viewBox="0 0 20 36"><path d="M9 3q2 14 1 29M3 24l7 9 7-8"/><path opacity=".35" stroke-width=".8" d="M8 4q2 14 1 27M4 25l7 7 5-7"/></symbol>
     <symbol id="arrow-diagonal" viewBox="0 0 24 24"><path d="M4 20Q11 12 20 4M10 4h10v10"/><path opacity=".35" stroke-width=".8" d="M5 20q7-8 14-15M11 5h8v8"/></symbol>
   </defs></svg>
-  <dialog id="project-dialog" aria-labelledby="dialog-title">
-    <article class="dialog-content">
-      <button class="dialog-close" type="button" aria-label="Закрыть описание проекта">×</button>
-      <p class="dialog-label">Решение для вашей команды</p><h2 id="dialog-title"></h2>
-      <h3 class="dialog-headline" id="dialog-headline"></h3>
-      <p class="dialog-demo" hidden><a class="button model-link" href="https://gushinets.github.io/hozblock-3d/?roof=mono" target="_blank" rel="noopener noreferrer">Открыть 3D-модель <span aria-hidden="true">↗</span></a></p>
-      <p id="dialog-description"></p>
-      <ul class="dialog-benefits" id="dialog-benefits" aria-label="Что даёт этот инструмент"></ul>
-      <p class="dialog-outcome" id="dialog-outcome"></p>
-      <a class="button dialog-cta" href="mailto:MustShip.gushinets@gmail.com?subject=Обсудить%20проект"><span class="dialog-cta-label">Хочу похожее решение</span><svg class="pencil-arrow" viewBox="0 0 36 20" aria-hidden="true"><use href="#arrow-right"/></svg></a>
-      <p class="dialog-next-step">Расскажите о своей задаче — обсудим, как адаптировать решение под ваш процесс.</p>
-    </article>
-  </dialog>
   <div class="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
