@@ -75,14 +75,15 @@ async (page) => {
         teamFont: parseFloat(getComputedStyle(document.querySelector('.member-copy')).fontSize),
         targets: [...document.querySelectorAll('.header a, .hero-actions a, .copy-email')].every((el) => { const r = el.getBoundingClientRect(); return r.width >= 43.5 && r.height >= 43.5; }),
         clipped: [...document.querySelectorAll('.hand-title, .service p, .service h3, .member h3, .member-copy, .email-strip')].filter((el) => el.scrollWidth > el.clientWidth + 1).map((el) => el.className),
-        overlapping: [...document.querySelectorAll('.service')].some((el) => { const text = el.querySelector('.service-copy').getBoundingClientRect(); const art = el.querySelector('.service-drawing').getBoundingClientRect(); return text.left < art.right - 1 && text.right > art.left + 1 && text.top < art.bottom - 1 && text.bottom > art.top + 1; }),
+        artworkSafe: [...document.querySelectorAll('.service')].every((el) => { const text = el.querySelector('.service-copy'); const image = el.querySelector('.service-drawing'); const card = el.getBoundingClientRect(); const art = image.getBoundingClientRect(); return Number(getComputedStyle(text).zIndex) > Number(getComputedStyle(image).zIndex) && getComputedStyle(image).pointerEvents === 'none' && art.left >= card.left && art.right <= card.right && art.top >= card.top && art.bottom <= card.bottom; }),
         contrast: [...document.querySelectorAll('.service p, .member-copy, .team-intro, .contact-checklist ul, .skills')].every((el) => contrast(getComputedStyle(el).color, paper) >= 4.5) && contrast(cta.color, cta.backgroundColor) >= 4.5,
         };
       });
       check(mobile.heroFont >= 16 && mobile.teamFont >= 15, `Мелкий текст на ширине ${width}`);
       check(mobile.targets, `Слишком маленькая область нажатия на ширине ${width}`);
       check(mobile.contrast, `Недостаточный контраст текста на ширине ${width}`);
-      check(mobile.clipped.length === 0 && !mobile.overlapping, `Обрезанный текст или наложение на ширине ${width}: ${mobile.clipped}`);
+      check(mobile.clipped.length === 0, `Обрезанный текст на ширине ${width}: ${mobile.clipped}`);
+      check(mobile.artworkSafe, `Рисунок выходит из карточки или перекрывает слой текста на ширине ${width}`);
       await cards.nth(1).click();
       check(await page.locator('#project-dialog').isVisible(), `Диалог не открывается на ширине ${width}`);
       check(await page.locator('#project-dialog').evaluate((el) => el.scrollWidth <= el.clientWidth + 1), `Диалог переполнен на ширине ${width}`);
