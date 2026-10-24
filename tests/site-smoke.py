@@ -44,6 +44,12 @@ for css in (root / "styles.css", root / "projects.css", root / "assets/fonts.css
 html = (root / "index.html").read_text(encoding="utf-8")
 assert html.index('role="tablist"') < html.index('id="project-panel"'), "project tabs must precede the panel"
 assert len(re.findall(r'role="tab"', html)) == 6, "expected six project tabs"
+for label in ("Работа с голосом", "Поиск и анализ данных", "Проверка соответствия", "Диалоговые помощники", "Текст и шаблоны", "Проверка решений в 3D"):
+    assert f'>{label}</span>' in html, f"missing approved project label: {label}"
+assert len(re.findall(r'class="project-icon"', html)) == 6, "expected six pencil project icons"
+assert 'id="screen-zoom"' in html, "missing zoom control above the screenshot"
+assert 'id="project-type"' not in html and 'id="project-disclosure"' not in html, "removed project notes must stay removed"
+assert 'id="project-details"' in html and '<details' not in html, "full project descriptions must be visible"
 assert 'id="project-dialog"' not in html, "old project modal must be removed"
 assert 'Это прототип' not in html, "prototype contact must not be published"
 for resource in ("projects.css", "projects.js", "app.js"):

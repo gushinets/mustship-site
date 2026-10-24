@@ -9,8 +9,8 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/fonts.css">
   <link rel="stylesheet" href="styles.css?v=213e7f9b6a07">
-  <link rel="stylesheet" href="projects.css?v=93c72bbe333e">
-  <script src="projects.js?v=f7259c16c76e" defer></script>
+  <link rel="stylesheet" href="projects.css?v=016a4aa98b86">
+  <script src="projects.js?v=15711ebb6ae9" defer></script>
   <script src="app.js?v=f4d5e3f42f3c" defer></script>
 </head>
 <body>
@@ -96,23 +96,25 @@
     </header>
 
     <div class="project-tabs" role="tablist" aria-label="Проекты mustShip">
-      <button id="tab-translator" class="project-tab" role="tab" type="button" aria-selected="true" aria-controls="project-panel" data-project="translator"><span class="tab-art portrait"><img loading="lazy" decoding="async" src="assets/projects/translator-playing.png" alt=""></span><span class="tab-title">Перевод разговора</span><small>Live Translator</small></button>
-      <button id="tab-cv" class="project-tab" role="tab" type="button" aria-selected="false" tabindex="-1" aria-controls="project-panel" data-project="cv"><span class="tab-art"><img loading="lazy" decoding="async" src="assets/projects/cv-search.png" alt=""></span><span class="tab-title">Поиск по резюме</span><small>CV Screener</small></button>
-      <button id="tab-scope" class="project-tab" role="tab" type="button" aria-selected="false" tabindex="-1" aria-controls="project-panel" data-project="scope"><span class="tab-art"><img loading="lazy" decoding="async" src="assets/projects/scope-current-analysis.png" alt=""></span><span class="tab-title">Контроль допработ</span><small>ScopeCreepGuard</small></button>
-      <button id="tab-bot" class="project-tab" role="tab" type="button" aria-selected="false" tabindex="-1" aria-controls="project-panel" data-project="bot"><span class="tab-art bot-art" aria-hidden="true"><svg viewBox="0 0 90 65" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 10h52a6 6 0 0 1 6 6v22a6 6 0 0 1-6 6H32L19 54V44h-7a6 6 0 0 1-6-6V16a6 6 0 0 1 6-6Z"/><path d="m29 22-7 6 7 6m17-12 7 6-7 6m-8-16-4 20M72 40h8v20L67 52H45"/></svg></span><span class="tab-title">Задание для ИИ</span><small>PromptEngineerBot</small></button>
-      <button id="tab-prompt" class="project-tab" role="tab" type="button" aria-selected="false" tabindex="-1" aria-controls="project-panel" data-project="prompt"><span class="tab-art"><img loading="lazy" decoding="async" src="assets/projects/prompt-explanation.png" alt=""></span><span class="tab-title">Работа с промптами</span><small>PromptOptimizer</small></button>
-      <button id="tab-model" class="project-tab" role="tab" type="button" aria-selected="false" tabindex="-1" aria-controls="project-panel" data-project="model"><span class="tab-art"><img loading="lazy" decoding="async" src="assets/projects/model-outside.png" alt=""></span><span class="tab-title">Модели и расчёты</span><small>Хозблок 3D</small></button>
+      <button id="tab-translator" class="project-tab" role="tab" type="button" aria-selected="true" aria-controls="project-panel" data-project="translator"><img loading="eager" class="project-icon" src="assets/projects/icons/translator.webp" width="48" height="48" alt="" aria-hidden="true" decoding="async"><span class="tab-title">Работа с голосом</span></button>
+      <button id="tab-cv" class="project-tab" role="tab" type="button" aria-selected="false" tabindex="-1" aria-controls="project-panel" data-project="cv"><img loading="eager" class="project-icon" src="assets/projects/icons/cv.webp" width="48" height="48" alt="" aria-hidden="true" decoding="async"><span class="tab-title">Поиск и анализ данных</span></button>
+      <button id="tab-scope" class="project-tab" role="tab" type="button" aria-selected="false" tabindex="-1" aria-controls="project-panel" data-project="scope"><img loading="eager" class="project-icon" src="assets/projects/icons/scope.webp" width="48" height="48" alt="" aria-hidden="true" decoding="async"><span class="tab-title">Проверка соответствия</span></button>
+      <button id="tab-bot" class="project-tab" role="tab" type="button" aria-selected="false" tabindex="-1" aria-controls="project-panel" data-project="bot"><img loading="eager" class="project-icon" src="assets/projects/icons/bot.webp" width="48" height="48" alt="" aria-hidden="true" decoding="async"><span class="tab-title">Диалоговые помощники</span></button>
+      <button id="tab-prompt" class="project-tab" role="tab" type="button" aria-selected="false" tabindex="-1" aria-controls="project-panel" data-project="prompt"><img loading="eager" class="project-icon" src="assets/projects/icons/prompt.webp" width="48" height="48" alt="" aria-hidden="true" decoding="async"><span class="tab-title">Текст и шаблоны</span></button>
+      <button id="tab-model" class="project-tab" role="tab" type="button" aria-selected="false" tabindex="-1" aria-controls="project-panel" data-project="model"><img loading="eager" class="project-icon" src="assets/projects/icons/model.webp" width="48" height="48" alt="" aria-hidden="true" decoding="async"><span class="tab-title">Проверка решений в 3D</span></button>
     </div>
     <p class="selection-status sr-only" aria-live="polite" id="selection-status"></p>
-    <div class="selector-heading"><span id="project-counter">1 из 6</span></div>
 
     <section class="showcase" id="project-panel" role="tabpanel" aria-labelledby="tab-translator" tabindex="0">
       <div class="project-visual">
-        <div class="project-window-bar" aria-hidden="true"><i></i><i></i><i></i><span>⌘</span></div>
-        <div class="visual-heading"><span id="project-name"></span><span id="project-type"></span></div>
+        <div class="project-visual-content">
+        <div class="visual-heading"><span id="project-name"></span></div>
+        <div class="screen-toolbar" id="screen-toolbar">
+          <div class="screen-steps" id="screen-steps" aria-label="Экраны проекта"></div>
+          <button class="zoom-control" id="screen-zoom" type="button" aria-label="Рассмотреть экран"><span>Рассмотреть<span class="zoom-extra"> экран</span></span><span class="zoom-icon" aria-hidden="true">⤢</span></button>
+        </div>
         <button class="screen" id="screen-open" type="button" aria-label="Увеличить экран проекта">
-          <img loading="lazy" decoding="async" id="project-image" src="assets/projects/translator-playing.png" alt="">
-          <span class="zoom-label">Рассмотреть экран <span aria-hidden="true">⤢</span></span>
+          <img loading="lazy" id="project-image" src="assets/projects/translator-playing.png" alt="">
         </button>
         <div class="bot-scheme" id="bot-scheme" hidden>
           <div class="chat-top"><span class="chat-avatar">✳</span><div>PromptEngineerBot<small>Схема диалога</small></div></div>
@@ -121,33 +123,33 @@
           <p class="chat-message outgoing">Для владельцев небольших компаний. Помогаем связать CRM и таблицы. Хочу, чтобы написали о своей задаче.</p>
           <div class="chat-result"><span>На выходе</span><strong>Задание для ИИ с контекстом, целью и форматом ответа</strong></div>
         </div>
-        <div class="screen-steps" id="screen-steps" aria-label="Экраны проекта"></div>
-        <p class="screen-caption" id="screen-caption"></p>
+        </div>
         <a class="demo-link" id="project-demo" target="_blank" rel="noopener noreferrer" hidden>Открыть в работе ↗</a>
-        <p class="disclosure" id="project-disclosure"></p>
       </div>
       <div class="project-copy">
+        <div class="project-copy-content">
         <h3 id="project-title"></h3>
-        <p class="situation" id="project-situation"></p>
-        <dl class="project-facts">
-          <div><dt>Что на входе</dt><dd id="project-input"></dd></div>
-          <div><dt>Что получаем</dt><dd id="project-output"></dd></div>
-          <div><dt>В работе</dt><dd id="project-check"></dd></div>
-        </dl>
-        <div class="project-promo">
-          <p class="application" id="project-application"></p>
-          <div class="project-actions">
-            <a class="button primary" id="discuss" href="#contact">Обсудить мою задачу <span aria-hidden="true">↗</span></a>
-          </div>
+        <p class="project-summary" id="project-summary"></p>
+        <div class="project-details" id="project-details">
+          <p class="situation" id="project-situation"></p>
+          <dl class="project-facts">
+            <div><dt>Что на входе</dt><dd id="project-input"></dd></div>
+            <div><dt>Что получаем</dt><dd id="project-output"></dd></div>
+            <div><dt>В работе</dt><dd id="project-check"></dd></div>
+          </dl>
+        </div>
+        </div>
+        <div class="project-actions">
+          <a class="button primary" id="discuss" href="#contact">Обсудить мою задачу <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </section>
 
-    <footer class="section-footer"><span>У вас другая задача?</span><a class="button primary" id="discuss-other" href="#contact">Расскажите, что хотите упростить <span aria-hidden="true">↗</span></a></footer>
+    <footer class="section-footer"><span>У вас другая задача?</span><a class="footer-link" id="discuss-other" href="#contact">Расскажите, что хотите упростить <span aria-hidden="true">↗</span></a></footer>
 
     <dialog class="image-dialog" id="image-dialog" aria-labelledby="image-dialog-title">
     <div class="dialog-heading"><h2 id="image-dialog-title">Экран проекта</h2><button class="close" type="button" data-close="image-dialog" aria-label="Закрыть изображение">×</button></div>
-    <img loading="lazy" decoding="async" src="assets/projects/translator-playing.png" id="expanded-image" alt="">
+    <img loading="lazy" src="assets/projects/translator-playing.png" id="expanded-image" alt="">
     <p id="expanded-disclosure"></p>
   </dialog>
   </section>

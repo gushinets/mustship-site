@@ -26,6 +26,8 @@ async (page) => {
 
   const cards = page.locator('[data-project]');
   check(await cards.count() === 6, 'Должно быть шесть проектов');
+  check(await page.locator('#projects .project-icon').count() === 6, 'Должно быть шесть карандашных иконок');
+  check(await page.locator('#project-type, #project-disclosure').count() === 0, 'Убранные пометки не должны отображаться');
   for (let i = 0; i < 6; i++) {
     const card = cards.nth(i);
     await card.click();
@@ -40,6 +42,10 @@ async (page) => {
     }
   }
   await cards.first().click();
+  await page.locator('#screen-zoom').click();
+  check(await page.locator('#image-dialog').isVisible(), 'Верхняя кнопка увеличения не работает');
+  await page.keyboard.press('Escape');
+  check(await page.locator('#screen-zoom').evaluate(el => document.activeElement === el), 'Фокус не вернулся к верхней кнопке увеличения');
   await page.locator('#screen-open').click();
   await page.getByRole('button', { name: 'Закрыть изображение' }).click();
   check(!await page.locator('#image-dialog').isVisible(), 'Кнопка закрытия не работает');
