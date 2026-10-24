@@ -479,3 +479,98 @@ html { scrollbar-width: auto; }
 
 /* Raster exports already use the exact paper background. */
 .hero-approved .approved-title, .hero-approved .approved-art > img, .hero-approved .proof-label img { mix-blend-mode: normal; }
+
+/* Approved hero layout and transition to services, 24 October 2026. */
+.hero-approved .hero-outcome > span { display: block; }
+.hero-approved { padding-bottom: 24px; }
+.hero-approved + #services { padding-top: 24px; }
+.hero-approved + #services::before { display: none; }
+.hero-approved + #services .services-intro { text-align: right; }
+.hero-approved + #services .service:nth-child(5) .service-drawing { top: 24px; }
+@media (min-width: 720px) and (max-width: 900px) {
+  .hero-approved + #services { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); }
+}
+.proof-card {
+  --preview-width: 80px;
+  display: grid;
+  grid-template-columns: var(--preview-width) minmax(0, 1fr);
+  grid-template-areas: 'preview copy' 'preview actions';
+  align-content: start;
+  align-items: start;
+  gap: 12px 16px;
+  padding: 14px 18px 16px;
+}
+.proof-card .proof-thumb {
+  grid-area: preview;
+  width: var(--preview-width);
+  height: auto;
+  aspect-ratio: 867 / 1815;
+  border: 0;
+  border-radius: 0;
+  object-fit: contain;
+}
+.proof-card .proof-copy { grid-area: copy; min-width: 0; padding-top: 6px; }
+.proof-card .proof-actions {
+  grid-area: actions;
+  display: grid;
+  grid-template-columns: 1.08fr 1fr;
+  align-items: stretch;
+  gap: 8px;
+  margin: 0;
+  min-width: 0;
+}
+.proof-action {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-width: 0;
+  min-height: 48px;
+  padding: 9px 10px;
+  border: 1px solid var(--ink);
+  border-radius: 4px 3px 5px 3px;
+  color: var(--ink);
+  font: 400 15px/1.2 'Nunito', sans-serif;
+  text-align: center;
+  text-decoration: none;
+}
+.proof-action::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  inset: -2px 1px 1px -2px;
+  border: 1px solid #282c2e80;
+  border-radius: 3px 5px 3px 4px;
+  transform: rotate(-.35deg);
+}
+.proof-action-primary { color: #f6f6f2; background: #282c2e url('assets/hero-graphite-fill.svg'); }
+.proof-action-primary:hover { background-color: #343b36; }
+.proof-action-secondary:hover { background: #1070380c; }
+.proof-action:focus-visible { outline: 2px solid var(--green); outline-offset: 4px; }
+.proof-action-arrow { flex: 0 0 auto; width: 23px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.proof-action-arrow-left { transform: rotate(180deg); }
+.proof-action-arrow-down { width: 16px; height: 23px; color: var(--green); }
+@media (min-width: 901px) and (max-width: 1150px) {
+  .proof-card { --preview-width: 72px; column-gap: 14px; padding-inline: 14px; }
+  .proof-action { font-size: 13px; padding-inline: 6px; gap: 5px; }
+}
+@media (max-width: 900px) {
+  .proof-card { --preview-width: 72px; gap: 10px 12px; padding: 12px; }
+  .proof-card .proof-copy { padding-top: 4px; }
+  .proof-action { font-size: 12.5px; padding: 8px 6px; gap: 5px; }
+  .proof-action-arrow-left { width: 20px; }
+}
+@media (min-width: 601px) and (max-width: 720px) {
+  .proof-card { --preview-width: 62px; grid-template-areas: 'preview copy' 'actions actions'; column-gap: 10px; padding-inline: 10px; }
+  .proof-card .proof-copy h2 { font-size: 18px; }
+  .proof-card .proof-copy p { font-size: 13px; }
+}
+@media (max-width: 600px) {
+  .proof-card { --preview-width: 76px; column-gap: 14px; }
+}
+@media (max-width: 400px) {
+  .proof-card { --preview-width: 66px; grid-template-areas: 'preview copy' 'actions actions'; column-gap: 12px; padding-inline: 10px; }
+  .proof-card .proof-copy h2 { font-size: 18px; }
+  .proof-card .proof-copy p { font-size: 13px; }
+}
