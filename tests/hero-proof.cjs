@@ -12,9 +12,9 @@ const { chromium } = require('playwright');
   const cases = [
     ['translator', 'Работа с голосом', 'https://livetranslator.anytoolai.store/'],
     ['cv', 'Поиск и анализ данных', '#projects'],
-    ['scope', 'Проверка соответствия', '#projects'],
-    ['bot', 'Диалоговые помощники', 'https://t.me/prmpt_improver_bot'],
-    ['prompt', 'Текст и шаблоны', '#projects'],
+    ['scope', 'Анализ по критериям', '#projects'],
+    ['bot', 'Создание промптов', 'https://t.me/prmpt_improver_bot'],
+    ['prompt', 'Улучшение промптов', '#projects'],
     ['model', 'Проверка решений в 3D', 'https://gushinets.github.io/hozblock-3d/?roof=mono'],
   ];
   const errors = [];
