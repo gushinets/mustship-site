@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="projects.css?v=31813f8bc629">
   <script src="projects.js?v=6f4597a74d8e" defer></script>
   <script src="app.js?v=f4d5e3f42f3c" defer></script>
+  <link rel="stylesheet" href="about.css?v=b94dd4b6bb6f">
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -154,38 +155,77 @@
   </dialog>
   </section>
 
-      <section class="team" id="team" aria-labelledby="team-title">
-        <h2 class="team-title hand-title" id="team-title">Наша команда</h2>
-        <p class="team-intro section-intro">Сначала разбираемся в задаче, затем предлагаем решение. <br>Ценим открытый диалог, внимание к деталям и ответственность за результат.</p>
-        <div class="members">
-          <article class="member sketch-box">
-            <div class="art portrait" role="img" aria-label="Наталья Гушинец" style="--x:106;--y:1277;--w:140;--h:167"></div>
-            <div class="member-content"><h3>Наталья Гушинец</h3><p class="role"><mark>Продукт и UX/UI</mark></p><p class="member-copy">Разбираюсь в задаче бизнеса и пути пользователя. Продумываю сценарии, структуру и интерфейсы, которыми удобно пользоваться.</p><ul class="skills"><li>Продукт</li><li>UX/UI</li><li>Аналитика</li><li>Коммуникации</li></ul></div>
-          </article>
-          <article class="member sketch-box">
-            <div class="art portrait" role="img" aria-label="Михаил Гушинец" style="--x:512;--y:1277;--w:140;--h:167"></div>
-            <div class="member-content"><h3>Михаил Гушинец</h3><p class="role"><mark>Разработка и архитектура</mark></p><p class="member-copy">Отвечаю за архитектуру и разработку. Руковожу технической командой, связываю системы и довожу сервис до запуска.</p><ul class="skills"><li>Backend</li><li>Интеграции</li><li>AI</li><li>DevOps</li></ul></div>
-          </article>
-          <article class="member crew-card sketch-box" aria-labelledby="crew-title">
-            <div class="portrait crew-portrait"><img src="assets/distributed-team.png" alt="Три анонимных силуэта на фоне светлого окна" width="1145" height="1374" loading="lazy" decoding="async"></div>
-            <div class="member-content"><h3 id="crew-title">Распределённая команда</h3><p class="role"><mark>Командная разработка</mark></p><p class="member-copy">Объединяем опыт в интерфейсах, серверной разработке и интеграциях. Работаем под техническим руководством Михаила — от отдельных задач до целого сервиса.</p><ul class="skills"><li>Frontend</li><li>Backend</li><li>Интеграции</li></ul></div>
-          </article>
+      <div class="about-sheet">
+  <section class="about-people" id="team" aria-labelledby="about-title">
+    <div class="about-heading">
+      <h2 class="about-brush-title about-brush-people" id="about-title"><span class="about-sr-only">Кто мы</span></h2>
+      <p>mustShip — небольшая команда разработки.<br> Разбираемся в вашей задаче и превращаем её в работающий инструмент.</p>
+    </div>
+    <div class="about-members">
+      <article class="about-member">
+        <div class="about-portrait about-natalia" role="img" aria-label="Наталья Гушинец"></div>
+        <div class="about-member-content">
+          <h3>Наталья Гушинец</h3>
+          <p class="about-role"><mark>Задача и общение</mark></p>
+          <p class="about-bio">Помогаю описать задачу, собрать вводные и организовать работу. Веду коммуникацию по проекту.</p>
         </div>
-        <span class="craft-detail team-flowchart" aria-hidden="true"></span>
-      </section>
-
-      <section class="contact ruled" id="contact" aria-labelledby="contact-title">
-        <div class="contact-main">
-          <h2 class="contact-title hand-title" id="contact-title">Связаться с нами</h2>
-          <p class="contact-copy section-intro">Расскажите, что хотите запустить или улучшить. Обсудим задачу и предложим, с чего начать.</p>
-          <div class="email-strip"><a href="mailto:MustShip.gushinets@gmail.com">MustShip.gushinets@gmail.com</a><button class="copy-email" type="button" aria-label="Скопировать email"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="6" width="11" height="15" rx="1"/><path d="M15 6V3H4v15h4"/></svg></button></div>
+      </article>
+      <article class="about-member">
+        <div class="about-portrait about-mikhail" role="img" aria-label="Михаил Гушинец"></div>
+        <div class="about-member-content">
+          <h3>Михаил Гушинец</h3>
+          <p class="about-role"><mark>Разработка и архитектура</mark></p>
+          <p class="about-bio">Оцениваю техническую часть, выбираю решение и отвечаю за разработку. Руковожу технической командой.</p>
+          <p class="about-person-note">Профильное высшее образование в ИИ</p>
         </div>
-        <div class="contact-checklist sketch-box"><h3>С чего можно начать:</h3><ul><li>Проверить спрос с MVP</li><li>Убрать ручную рутину</li><li>Связать сервисы</li><li>Подключить AI-помощника</li><li>Разобрать текущую систему</li></ul></div>
-        <div class="contact-closing">
-          <a class="button contact-cta" href="mailto:MustShip.gushinets@gmail.com?subject=Обсудить%20задачу">Обсудить задачу <svg class="pencil-arrow" viewBox="0 0 36 20" aria-hidden="true"><use href="#arrow-right"/></svg></a>
-          <div class="contact-signature"><span class="paper-detail paper-contact" aria-hidden="true"></span><img src="assets/header-pencil-lettering.png" alt="Ваши идеи в работающие продукты" width="1860" height="846" decoding="async"></div>
+      </article>
+      <article class="about-member about-crew">
+        <div class="about-crew-portrait"><img src="assets/distributed-team.png" alt="Условное изображение распределённой команды" width="1145" height="1374" loading="lazy" decoding="async"></div>
+        <div class="about-member-content">
+          <h3>Распределённая команда</h3>
+          <p class="about-role"><mark>Командная разработка</mark></p>
+          <p class="about-bio">Объединяем опыт в интерфейсах, серверной разработке и интеграциях. Работаем под техническим руководством Михаила — от отдельных задач до целого сервиса.</p>
         </div>
-      </section>
+      </article>
+    </div>
+  </section>
+  <section class="about-principles" aria-labelledby="principles-title">
+    <div class="about-principles-heading">
+      <h2 class="about-brush-title about-brush-principles" id="principles-title"><span class="about-sr-only">Как мы работаем</span></h2>
+      <p>Чтобы вы понимали, что получаете, сколько это стоит и кто за это отвечает.</p>
+    </div>
+    <div class="about-principles-grid">
+      <article>
+        <h3>За программу отвечают специалисты</h3>
+        <p>ИИ помогает нам писать код. Разработчики продумывают, как устроена программа, проверяют её работу и исправляют ошибки. Техническую часть проекта ведёт Михаил.</p>
+      </article>
+      <article>
+        <h3>Вы проверяете результат на своих задачах</h3>
+        <p>Проверяем, правильно ли заполнен документ и дошла ли заявка до сотрудника. Вы видите работу решения на знакомых примерах и можете оценить его пользу.</p>
+      </article>
+      <article>
+        <h3>Понятно, за что вы платите</h3>
+        <p>Заранее согласуем объём, стоимость и способ проверки результата. Большую задачу делим на этапы: вы видите, что уже работает, и решаете, что развивать дальше.</p>
+      </article>
+      <article>
+        <h3>Учитываем то, чем вы уже пользуетесь</h3>
+        <p>Разбираемся, как устроены ваш сайт, CRM и таблицы. Сохраняем полезные наработки. Объясняем, зачем в вашей задаче нужен ИИ и можно ли обойтись без него.</p>
+      </article>
+    </div>
+  </section>
+  <section class="contact ruled" id="contact" aria-labelledby="contact-title">
+    <div class="contact-main">
+      <h2 class="contact-title about-brush-title about-brush-contact-restored" id="contact-title"><span class="about-sr-only">Связаться с нами</span></h2>
+      <p class="contact-copy section-intro">Расскажите, что хотите запустить или улучшить. Обсудим задачу и предложим, с чего начать.</p>
+      <div class="email-strip"><a href="mailto:MustShip.gushinets@gmail.com">MustShip.gushinets@gmail.com</a><button class="copy-email" type="button" aria-label="Скопировать email"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="6" width="11" height="15" rx="1"/><path d="M15 6V3H4v15h4"/></svg></button></div>
+    </div>
+    <div class="contact-checklist sketch-box"><h3>С чего можно начать:</h3><ul><li>Проверить спрос с MVP</li><li>Убрать ручную рутину</li><li>Связать сервисы</li><li>Подключить AI-помощника</li><li>Разобрать текущую систему</li></ul></div>
+    <div class="contact-closing">
+      <a class="button contact-cta" href="mailto:MustShip.gushinets@gmail.com?subject=Обсудить%20задачу">Обсудить задачу <svg class="pencil-arrow" viewBox="0 0 36 20" aria-hidden="true"><use href="#arrow-right"/></svg></a>
+      <div class="contact-signature"><span class="paper-detail paper-contact" aria-hidden="true"></span><img src="assets/header-pencil-lettering.png" alt="Ваши идеи в работающие продукты" width="1860" height="846" decoding="async"></div>
+    </div>
+  </section>
+</div>
     </main>
   </div>
 

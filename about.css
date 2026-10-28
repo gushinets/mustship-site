@@ -1,0 +1,93 @@
+.about-sheet { --about-paper: #f6f6f2; --about-ink: #282c2e; --about-muted: #626c74; --about-dark: #242b28; --about-green: #37e97d; --about-mark: #b6f3c4; }
+.about-sheet { max-width: 1440px; margin: auto; background: var(--about-paper); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%238a8a80' opacity='.035' filter='url(%23n)' d='M0 0h160v160H0z'/%3E%3C/svg%3E"); }
+.about-people h2, .about-people h3, .about-people p, .about-people ul, .about-principles h2, .about-principles h3, .about-principles p, .about-principles ul { margin: 0; }
+.about-sheet h2 { position: relative; width: fit-content; font-family: Neucha, cursive; font-weight: 400; line-height: 1.12; }
+.about-sheet h2::after { content: ''; position: absolute; left: 0; right: 0; bottom: -7px; height: 3px; background: var(--about-green); border-radius: 30%; transform: rotate(-1.5deg); }
+.about-people { padding: 45px 48px 38px; }
+.about-heading { display: grid; grid-template-columns: .65fr 1.35fr; gap: 36px; align-items: center; margin-bottom: 35px; }
+.about-heading h2 { font-size: clamp(38px, 4.2vw, 56px); }
+.about-heading > p { max-width: 760px; color: var(--about-muted); font-size: clamp(19px, 1.65vw, 24px); font-weight: 600; line-height: 1.45; }
+.about-members { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.about-member { position: relative; display: grid; grid-template-columns: 140px minmax(0,1fr); gap: 22px; padding: 25px 22px 24px; border: 1px solid #a2a59e; box-shadow: -2px 2px 0 #a2a59e35; }
+.about-member::after { content: ''; position: absolute; inset: 2px -2px -2px 1px; border: 1px solid #a2a59e55; pointer-events: none; transform: rotate(-.35deg); }
+.about-crew { grid-column: 1 / -1; justify-self: center; width: calc((100% - 28px) / 2); }
+.about-crew-portrait { align-self: start; width: 140px; padding: 9px; border: 1px solid #a2a59e; box-shadow: 2px 2px 0 #a2a59e35; transform: rotate(-2deg); }
+.about-crew-portrait img { display: block; width: 100%; height: auto; mix-blend-mode: multiply; }
+.about-portrait { width: 140px; aspect-ratio: 140 / 167; background-image: url('assets/artwork.png'); background-repeat: no-repeat; background-size: calc(977 / 140 * 100%) calc(1610 / 167 * 100%); background-position-y: calc(1277 / (1610 - 167) * 100%); mix-blend-mode: darken; transform: rotate(-2deg); }
+.about-natalia { background-position-x: calc(106 / (977 - 140) * 100%); }
+.about-mikhail { background-position-x: calc(512 / (977 - 140) * 100%); transform: rotate(1deg); }
+.about-member h3 { font-family: Nunito, sans-serif; font-size: clamp(23px, 2.2vw, 29px); font-weight: 700; line-height: 1.2; letter-spacing: -.02em; }
+.about-role { margin-top: 8px !important; font-family: Pangolin, cursive; font-size: 18px; line-height: 1.4; }
+.about-role mark { background: var(--about-mark); color: #315448; padding: 0 4px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.about-bio { margin-top: 16px !important; font-size: 17px; line-height: 1.5; }
+.about-person-note { margin-top: 14px !important; font-family: Pangolin, cursive; font-size: 17px; line-height: 1.4; color: #40634a; }
+.about-principles { position: relative; padding: 34px 48px 29px; background-color: var(--about-dark); background-image: linear-gradient(#242b28dc,#242b28dc), url('assets/hero-graphite-fill.svg'); background-size: auto, 100px 100px; color: #f3f4ee; }
+.about-principles-heading { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(0,1fr); align-items: center; gap: 40px; }
+.about-principles-heading h2 { flex-shrink: 0; font-size: clamp(32px, 3vw, 40px); }
+.about-principles-heading h2::after { opacity: .85; height: 2px; }
+.about-principles-heading > p { max-width: 360px; font-size: 18px; line-height: 1.4; color: #d2d9d2; }
+.about-principles-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 30px; margin-top: 37px; }
+.about-principles-grid h3 { font-family: Nunito, sans-serif; font-size: 22px; font-weight: 700; line-height: 1.25; letter-spacing: -.02em; color: #b6f3c4; }
+.about-principles-grid p { margin-top: 12px; font-size: 16px; line-height: 1.5; color: #ebeee8; }
+.about-sheet a:focus-visible { outline: 3px solid #08aa51; outline-offset: 5px; }
+@media (max-width: 1050px) {
+  .about-people { padding: 32px 28px; }
+  .about-heading { grid-template-columns: .5fr 1.5fr; gap: 30px; }
+  .about-members { gap: 20px; }
+  .about-crew { width: calc((100% - 20px) / 2); }
+  .about-member { grid-template-columns: 108px minmax(0,1fr); gap: 15px; padding: 20px 16px; }
+  .about-portrait { width: 108px; }
+  .about-crew-portrait { width: 108px; }
+  .about-member h3 { font-size: 24px; }
+  .about-role { font-size: 17px; }
+  .about-bio, .about-person-note { font-size: 16px; }
+  .about-principles { padding: 30px 28px; }
+  .about-principles-grid { grid-template-columns: 1fr 1fr; gap: 25px 35px; }
+  .about-principles-heading { align-items: start; }
+  .about-principles-heading > p { max-width: 300px; }
+}
+@media (max-width: 720px) {
+  .about-heading { grid-template-columns: 1fr; gap: 24px; margin-bottom: 26px; }
+  .about-heading p br { display: none; }
+  .about-members { grid-template-columns: 1fr; }
+  .about-crew { width: 100%; }
+  .about-member { grid-template-columns: 112px minmax(0,1fr); padding: 21px 20px; gap: 20px; }
+  .about-portrait { width: 112px; }
+  .about-crew-portrait { width: 112px; }
+  .about-member h3 { font-size: 27px; }
+  .about-principles-heading { display: block; }
+  .about-principles-heading > p { max-width: none; margin-top: 23px; }
+  .about-principles-grid { margin-top: 26px; gap: 24px; }
+}
+@media (max-width: 450px) {
+  .about-people { padding: 30px 20px 26px; }
+  .about-member { grid-template-columns: 84px minmax(0,1fr); gap: 13px; padding: 20px 15px; }
+  .about-portrait { width: 84px; }
+  .about-crew-portrait { width: 84px; grid-row: span 2; padding: 5px; }
+  .about-member h3 { font-size: 24px; }
+  .about-role { font-size: 16px; }
+  .about-bio, .about-person-note { grid-column: 1 / -1; }
+  .about-member-content { display: contents; }
+  .about-member h3 { align-self: center; }
+  .about-portrait { grid-row: span 2; }
+  .about-role { align-self: start; margin-top: 0 !important; }
+  .about-bio { margin-top: 1px !important; }
+  .about-person-note { margin-top: 0 !important; }
+  .about-principles { padding: 28px 20px; }
+  .about-principles-grid { grid-template-columns: 1fr; gap: 24px; }
+  .about-principles-grid p { margin-top: 7px; }
+  .about-principles-heading h2 { font-size: 33px; }
+  .about-principles-heading > p { font-size: 17px; }
+}
+.about-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.about-sheet h2.about-brush-title { position: relative; font-size: inherit; --about-title-color: #282c2e; --about-line-color: #107038; }
+.about-sheet h2.about-brush-title::before { content: ''; position: relative; z-index: 1; display: block; width: 100%; aspect-ratio: var(--about-title-ratio); background: var(--about-title-color); mask-image: url('assets/about/section-headings.webp'); mask-repeat: no-repeat; mask-size: var(--about-mask-size); mask-position: var(--about-mask-position); }
+.about-sheet h2.about-brush-title::after { inset: calc(100% - 20px) auto auto 0; width: 104.35%; height: 38px; background: var(--about-line-color); border-radius: 0; mask: url('assets/about/title-underline.svg') 0 0 / 100% 100% no-repeat; transform: none; }
+.about-sheet h2.about-brush-people { width: min(100%,270px); --about-title-ratio: 812 / 260; --about-mask-size: 189.1626% 393.8462%; --about-mask-position: 52.6243% 9.2932%; }
+.about-sheet h2.about-brush-principles { width: min(100%,490px); --about-title-color: #edf2ef; --about-line-color: #37e97d; --about-title-ratio: 1456 / 288; --about-mask-size: 105.4945% 355.5556%; --about-mask-position: 55% 55.5707%; }
+.about-sheet h2.about-brush-contact-restored { width: min(100%,450px); height: auto; --about-title-ratio: 2145 / 423; --about-mask-size: 101.2121% 171.1584%; --about-mask-position: 57.6923% 55.1495%; }
+.about-sheet h2.about-brush-contact-restored::before { mask-image: url('assets/about/contact-title.webp'); }
+.about-sheet { --u: calc(100cqw / 977); container-type: inline-size; }
+.about-sheet .contact-checklist h3 { font-family: Nunito, sans-serif; font-weight: 700; letter-spacing: -.02em; }
+@media (max-width:720px) { .about-sheet h2.about-brush-people { width: min(100%,240px); } }
+@media (max-width:450px) { .about-member h3 { font-size: 22px; } .about-crew h3 { font-size: 21px; } }

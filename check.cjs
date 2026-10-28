@@ -9,7 +9,7 @@ async (page) => {
   const layout = await page.evaluate(() => ({
     width: document.querySelector('.sheet').getBoundingClientRect().width,
     height: document.querySelector('.sheet').getBoundingClientRect().height,
-    sections: [...document.querySelectorAll('main > section')].map((el) => { const r = el.getBoundingClientRect(); return { top: r.top, bottom: r.bottom }; }),
+    sections: [...document.querySelectorAll('main > section, .about-sheet > section')].map((el) => { const r = el.getBoundingClientRect(); return { top: r.top, bottom: r.bottom }; }),
     anchors: [...document.querySelectorAll('a[href^="#"]')].every((a) => document.querySelector(a.getAttribute('href'))),
   }));
   check(Math.abs(layout.width - 977) < 1, 'Ширина страницы отличается от окна');
@@ -84,11 +84,11 @@ async (page) => {
         const cta = getComputedStyle(document.querySelector('.contact-cta'));
         return {
         heroFont: parseFloat(getComputedStyle(document.querySelector('.hero-copy')).fontSize),
-        teamFont: parseFloat(getComputedStyle(document.querySelector('.member-copy')).fontSize),
+        teamFont: parseFloat(getComputedStyle(document.querySelector('.about-bio')).fontSize),
         targets: [...document.querySelectorAll('.header a, .hero-actions a, .copy-email')].every((el) => { const r = el.getBoundingClientRect(); return r.width >= 43.5 && r.height >= 43.5; }),
-        clipped: [...document.querySelectorAll('.hand-title, .service p, .service h3, .member h3, .member-copy, .email-strip')].filter((el) => el.scrollWidth > el.clientWidth + 1).map((el) => el.className),
+        clipped: [...document.querySelectorAll('.hand-title, .service p, .service h3, .about-member h3, .about-bio, .email-strip')].filter((el) => el.scrollWidth > el.clientWidth + 1).map((el) => el.className),
         artworkSafe: [...document.querySelectorAll('.service')].every((el) => { const text = el.querySelector('.service-copy'); const image = el.querySelector('.service-drawing'); const card = el.getBoundingClientRect(); const art = image.getBoundingClientRect(); return Number(getComputedStyle(text).zIndex) > Number(getComputedStyle(image).zIndex) && getComputedStyle(image).pointerEvents === 'none' && art.left >= card.left && art.right <= card.right && art.top >= card.top && art.bottom <= card.bottom; }),
-        contrast: [...document.querySelectorAll('.service p, .member-copy, .team-intro, .contact-checklist ul, .skills')].every((el) => contrast(getComputedStyle(el).color, paper) >= 4.5) && contrast(cta.color, cta.backgroundColor) >= 4.5,
+        contrast: [...document.querySelectorAll('.service p, .about-bio, .about-heading > p, .contact-checklist ul, .skills')].every((el) => contrast(getComputedStyle(el).color, paper) >= 4.5) && contrast(cta.color, cta.backgroundColor) >= 4.5,
         };
       });
       check(mobile.heroFont >= 16 && mobile.teamFont >= 15, `Мелкий текст на ширине ${width}`);
