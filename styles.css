@@ -504,10 +504,11 @@ html { scrollbar-width: auto; }
   grid-area: preview;
   width: var(--preview-width);
   height: auto;
-  aspect-ratio: 867 / 1815;
+  aspect-ratio: auto;
   border: 0;
   border-radius: 0;
   object-fit: contain;
+  align-self: center;
 }
 .proof-card .proof-copy { grid-area: copy; min-width: 0; padding-top: 6px; }
 .proof-card .proof-actions {

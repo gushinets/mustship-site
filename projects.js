@@ -4,6 +4,8 @@ const projects = {
   cv: {
     name: 'CV Screener', type: 'Прототип', title: 'Находите нужный опыт в резюме',
     summary: 'Ищет и сравнивает сведения в резюме и документах, отвечает со ссылками на источники.',
+    preview: ['assets/projects/hero/cv-window.webp', 360, 748],
+    proofSummary: 'Помогаем находить нужные сведения в документах, сравнивать данные и проверять ответы по источникам.',
     situation: 'Откликов много. Чтобы найти конкретный опыт, приходится открывать документы и перечитывать их по одному.',
     input: 'Резюме и другие документы; вопрос о нужных сведениях.',
     output: 'Ответы и сравнение сведений со ссылками на источники. Уточняющий диалог и отчёт по документам.',
@@ -15,6 +17,8 @@ const projects = {
   scope: {
     name: 'ScopeCreepGuard', type: 'Собственная разработка', title: 'Держите доработки под контролем',
     summary: 'Сравнивает новую просьбу с согласованным объёмом. Помогает подготовить ответ клиенту и документ о допработах.',
+    preview: ['assets/projects/hero/scope-window.webp', 360, 753],
+    proofSummary: 'Сопоставляем запросы и документы с заданными условиями. Помогаем замечать расхождения и готовить ответ.',
     situation: '«Давайте ещё небольшую правку». Объём растёт, а договорённости о сроках и оплате остаются прежними.',
     input: 'Согласованный объём проекта и новая просьба клиента.',
     output: 'Разбор границ проекта, редактируемый ответ клиенту и документ о дополнительных работах.',
@@ -26,6 +30,8 @@ const projects = {
   model: {
     name: 'Хозблок 3D', type: 'Внутренний проект', title: 'Проверьте размещение до закупки',
     summary: 'Показывает объект снаружи и внутри, помогает проверить размещение и обсудить замечания.',
+    preview: ['assets/projects/hero/model-window.webp', 359, 756],
+    proofSummary: 'Создаём интерактивные модели: можно осмотреть объект, проверить размещение и обсудить изменения до начала работ.',
     situation: 'На плане всё помещается. Но удобно ли будет пользоваться пространством и заедет ли автомобиль под навес?',
     input: 'Размеры объекта, план и согласованные исходные данные.',
     output: 'Интерактивная 3D-модель: виды снаружи и изнутри, проверка размещения, движение автомобиля и метки замечаний.',
@@ -38,6 +44,8 @@ const projects = {
   translator: {
     name: 'Live Translator', type: 'Мобильное приложение', title: 'Переводите разговор с одного телефона',
     summary: 'Распознаёт речь, переводит и озвучивает реплики. У каждого собеседника — своя сторона экрана.',
+    preview: ['assets/projects/hero/translator-window.webp', 360, 638],
+    proofSummary: 'Распознаём речь, переводим и озвучиваем текст. Помогаем общаться на разных языках и работать с голосом.',
     situation: 'Нужно обсудить дело, а общего языка не хватает. Переключения между приложениями прерывают разговор.',
     input: 'Речь двух собеседников и выбранные языки.',
     output: 'Реплики, перевод и озвучка в одном мобильном web-интерфейсе. У каждого собеседника своя сторона экрана.',
@@ -50,6 +58,8 @@ const projects = {
   bot: {
     name: 'PromptEngineerBot', type: 'Telegram-бот', title: 'Превращайте идею в задание для ИИ',
     summary: 'Уточняет контекст, цель и формат. Готовое задание можно использовать в выбранной ИИ-модели.',
+    preview: ['assets/projects/hero/bot-window.webp', 360, 726],
+    proofSummary: 'Создаём помощников, которые задают уточняющие вопросы, собирают контекст и помогают решить задачу в диалоге.',
     situation: 'Вы знаете, что хотите получить, но ответ ИИ снова получается слишком общим. Важные условия приходится добавлять по очереди.',
     input: 'Описание задачи обычными словами в Telegram.',
     output: 'Уточнение контекста, цели и формата. Затем — структурированный промпт для дальнейшей работы.',
@@ -61,6 +71,8 @@ const projects = {
   prompt: {
     name: 'PromptOptimizer', type: 'Браузерное расширение', title: 'Сохраняйте удачные промпты',
     summary: 'Помогает доработать запрос и сохранить его в библиотеке для следующих задач.',
+    preview: ['assets/projects/hero/prompt-window.webp', 360, 755],
+    proofSummary: 'Помогаем составлять тексты и задания для ИИ, сохранять удачные формулировки и повторно использовать шаблоны.',
     situation: 'Подходящая формулировка осталась в старой переписке. Для следующей похожей задачи запрос приходится собирать заново.',
     input: 'Короткий запрос, цель и контекст задачи.',
     output: 'Структурированный промпт и библиотека сохранённых вариантов в расширении браузера.',
@@ -141,4 +153,27 @@ root.querySelectorAll('dialog').forEach(dialog => dialog.addEventListener('click
   if (event.target === dialog && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) dialog.close();
 }));
 selectProject(current);
+
+const proof = document.querySelector('.proof-card');
+const proofTab = tabs[Math.floor(Math.random() * tabs.length)];
+const proofKey = proofTab.dataset.project;
+const proofProject = projects[proofKey];
+const proofImage = proof.querySelector('.proof-thumb');
+[proofImage.src, proofImage.width, proofImage.height] = proofProject.preview;
+proofImage.alt = 'Упрощённая карандашная иллюстрация сценария ' + proofProject.name + '. ' + proofProject.disclosure;
+proof.querySelector('#proof-title').textContent = proofTab.querySelector('.tab-title').textContent;
+proof.querySelector('.proof-copy p').textContent = proofProject.proofSummary;
+const proofLink = proof.querySelector('.proof-action-primary');
+if (proofProject.demo) {
+  proofLink.href = proofProject.demo;
+} else {
+  proofLink.href = '#projects';
+  proofLink.removeAttribute('target');
+  proofLink.removeAttribute('rel');
+  proofLink.querySelector('span').textContent = 'Посмотреть пример';
+  proofLink.addEventListener('click', () => {
+    selectProject(proofKey);
+    requestAnimationFrame(() => proofTab.focus({ preventScroll: true }));
+  });
+}
 })();

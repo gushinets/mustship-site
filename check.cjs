@@ -18,7 +18,7 @@ async (page) => {
   check(await page.locator('.brand img').evaluate(image => image.complete && image.naturalWidth > 0), 'Логотип не загрузился');
   check(await page.locator('.hero-title, .services-title, .projects-title, .team-title, .contact-title, .hand-note').evaluateAll((elements) => elements.every((el) => el.textContent.trim() && getComputedStyle(el).backgroundImage === 'none')), 'Надписи должны отображаться текстом, без растрового фона');
   check(await page.locator('#process > img').count() === 1 && await page.locator('#process > img').evaluate(image => image.complete && image.naturalWidth > 0), 'Единая иллюстрация разработки не загрузилась');
-  check(await page.locator('.proof-actions a').count() === 2 && await page.locator('.proof-actions a').first().getAttribute('href') === 'https://livetranslator.anytoolai.store/', 'Ссылка на работающий переводчик не подключена');
+  check(await page.locator('.proof-actions a').count() === 2 && !!await page.locator('.proof-actions a').first().getAttribute('href'), 'Карточка выбранного проекта должна содержать две рабочие ссылки');
   check(await page.locator('.service').count() === 5, 'Должно быть пять услуг');
   check(await page.locator('.service').evaluateAll(cards => cards.every(card => { const image = card.querySelector('img.service-drawing'); return image && image.complete && image.naturalWidth > 0; })), 'У каждой услуги должна загрузиться согласованная иллюстрация');
   check(await page.locator('.services-title').evaluate(el => getComputedStyle(el, '::after').backgroundColor === 'rgb(16, 112, 56)'), 'Подчёркивание должно быть чистым зелёным #107038');
