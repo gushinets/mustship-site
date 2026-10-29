@@ -8,11 +8,12 @@
   <title>mustShip — Реализовать. Нельзя откладывать.</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/fonts.css">
-  <link rel="stylesheet" href="styles.css?v=4c94365131c2">
+  <link rel="stylesheet" href="styles.css?v=4870647dc130">
   <link rel="stylesheet" href="projects.css?v=31813f8bc629">
   <script src="projects.js?v=6f4597a74d8e" defer></script>
   <script src="app.js?v=f4d5e3f42f3c" defer></script>
   <link rel="stylesheet" href="about.css?v=b94dd4b6bb6f">
+  <link rel="stylesheet" href="hero.css?v=67abba054169">
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -27,38 +28,51 @@
     </header>
 
     <main id="main">
-      <section class="hero hero-approved" aria-labelledby="hero-title">
-        <div class="hero-main">
-          <h1 id="hero-title" class="hero-title"><span class="visually-hidden">Реализовать. Нельзя откладывать.</span>
-            <img class="approved-title" src="assets/hero-approved-title.jpg" alt="" width="600" height="194" decoding="async" fetchpriority="high">
-          </h1>
-          <p class="hero-copy">Создаём сервисы под ваши задачи. Автоматизируем работу с заявками и документами, связываем CRM, таблицы и другие системы.</p>
-          <p class="hero-outcome"><span>Меньше времени на рутину.</span><span>Больше — на жизнь и развитие.</span></p>
-          <div class="hero-actions">
-            <a class="button primary" href="#contact">Обсудить задачу <svg class="pencil-arrow" viewBox="0 0 36 20" aria-hidden="true"><use href="#arrow-right"/></svg></a>
-            <a class="button secondary" href="#projects">Посмотреть проекты</a>
+      <section class="hero hero-approved hero-stage" aria-labelledby="hero-title">
+        <div class="hero-composition">
+          <div class="hero-main">
+            <h1 id="hero-title" class="hero-title"><span class="visually-hidden">Реализовать. Нельзя откладывать.</span>
+              <img class="approved-title" src="assets/hero-approved-title.jpg" alt="" width="600" height="194" decoding="async" fetchpriority="high">
+            </h1>
+            <img class="hero-process-mobile" src="assets/hero-process-mobile.webp?v=96907ffba7d0" width="1430" height="520" alt="" aria-hidden="true" loading="lazy" decoding="async">
           </div>
-          <p class="hero-helper">Для первого разговора достаточно<br>описать задачу своими словами.</p>
-          <ul class="benefits" aria-label="Как мы работаем">
-            <li><svg class="sketch-art" viewBox="0 0 44 44" aria-hidden="true"><use class="pencil-echo" href="#benefit-launch" transform="translate(.5 .4)"/><g id="benefit-launch"><path d="M14 26C17 18 25 8 38 6c-1 13-9 22-17 25Zm4-8h-6l-6 9 8-1m15 1v6l-9 6 1-8"/><circle cx="28" cy="16" r="3.5"/><path class="sketch-accent" d="M13 30q-7-1-7 8 8 0 9-6M3 33l-1 3m9 5-3 1"/></g></svg><span>Быстрый <br>старт</span></li>
-            <li><svg class="sketch-art" viewBox="0 0 44 44" aria-hidden="true"><use class="pencil-echo" href="#benefit-process" transform="translate(.5 .4)"/><g id="benefit-process"><path d="M4 5h11v9H4Zm24 13h11v9H28ZM4 31h11v9H4ZM16 9h12q6 0 6 6m-3-3 3 4 3-4M27 23H16q-6 0-6 5m-3-3 3 4 3-4"/><path class="sketch-accent" d="m7 9 2 2 3-4m19 16 2 2 3-4m-29 16 2 2 3-4"/></g></svg><span>Понятный <br>процесс</span></li>
-            <li><svg class="sketch-art" viewBox="0 0 44 44" aria-hidden="true"><use class="pencil-echo" href="#benefit-dialogue" transform="translate(.5 .4)"/><g id="benefit-dialogue"><path d="M8 6h20q4 0 4 4v10q0 4-4 4H17l-8 6v-6H8q-4 0-4-4V10q0-4 4-4Zm27 11h1q4 0 4 4v9q0 4-4 4h-2v5l-7-5h-5q-4 0-4-4v-2"/><path class="sketch-accent" d="M11 13h14m-14 5h9m7 11h6"/></g></svg><span>Честная <br>коммуникация</span></li>
-            <li><svg class="sketch-art" viewBox="0 0 44 44" aria-hidden="true"><use class="pencil-echo" href="#benefit-result" transform="translate(.5 .4)"/><g id="benefit-result"><path d="M7 7q15-1 30 0 3 0 3 3v23q0 3-3 3H7q-3 0-3-3V10q0-3 3-3Zm-3 8h36"/><circle cx="9" cy="11" r=".8"/><circle cx="13" cy="11" r=".8"/><circle cx="17" cy="11" r=".8"/><path class="sketch-accent" d="m13 25 7 7 12-13"/></g></svg><span>Реальный <br>результат</span></li>
-          </ul>
-        </div>
-        <div class="hero-visual">
-          <figure class="approved-art" id="process" aria-label="От идеи к продукту: набросок бизнес-процесса на салфетке, прототип, код с помощью ИИ и сервис на ноутбуке."><img src="assets/hero-approved-art.jpg" width="605" height="628" alt="Идея → прототип → код → жизнь" decoding="async" fetchpriority="high">
-          </figure>
-          <div class="proof-group">
+          <div class="hero-art-window">
             <p class="proof-label"><span class="visually-hidden">✓ реализовано</span><img src="assets/hero-approved-realized.jpg" width="426" height="61" alt="" decoding="async"></p>
-            <article class="proof-card" aria-labelledby="proof-title">
-              <img class="proof-thumb" src="assets/projects/hero/translator-window.webp" alt="Упрощённая карандашная иллюстрация сценария Live Translator" width="360" height="638" loading="eager">
-              <div class="proof-copy"><h2 id="proof-title">Работа с голосом</h2><p>Распознаём речь, переводим и озвучиваем текст. Помогаем общаться на разных языках и работать с голосом.</p></div>
-              <div class="proof-actions" aria-label="Посмотреть проекты">
-                <a class="proof-action proof-action-primary" href="https://livetranslator.anytoolai.store/" target="_blank" rel="noopener noreferrer"><svg class="proof-action-arrow proof-action-arrow-left" viewBox="0 0 36 20" aria-hidden="true"><use href="#arrow-right"/></svg><span>Посмотреть в работе</span></a>
-                <a class="proof-action proof-action-secondary" href="#projects"><span>К другим проектам</span><svg class="proof-action-arrow proof-action-arrow-down" viewBox="0 0 20 26" aria-hidden="true"><path d="M10 2Q9.5 12 10 23M3 16L10 23L17 16M11 3L10.8 21"/></svg></a>
+            <div class="hero-art-scene">
+              <figure class="approved-art" id="process" aria-label="От идеи к работающему сервису: салфетка, прототип, код и ноутбук.">
+                <picture>
+                  <source media="(max-width: 1099px)" srcset="assets/hero-laptop-mobile.webp?v=164981f80d7a">
+                  <img src="assets/hero-composition.webp?v=8a13a464315a" width="1821" height="1041" alt="Карандашная иллюстрация: идея, прототип, код и ноутбук с примером проекта." decoding="async" fetchpriority="high">
+                </picture>
+              </figure>
+              <div class="hero-screen" aria-label="Пример реализованного проекта">
+                <div class="proof-group">
+                  <article class="proof-card" aria-labelledby="proof-title">
+                    <img class="proof-thumb" src="assets/projects/hero/translator-window.webp" alt="Упрощённая карандашная иллюстрация сценария Live Translator" width="360" height="638" loading="eager">
+                    <div class="proof-copy"><h2 id="proof-title">Работа с голосом</h2><p>Распознаём речь, переводим и озвучиваем текст. Помогаем общаться на разных языках и работать с голосом.</p></div>
+                    <div class="proof-actions" aria-label="Посмотреть проекты">
+                      <a class="proof-action proof-action-primary" href="https://livetranslator.anytoolai.store/" target="_blank" rel="noopener noreferrer"><svg class="proof-action-arrow proof-action-arrow-left" viewBox="0 0 36 20" aria-hidden="true"><use href="#arrow-right"/></svg><span>Посмотреть в работе</span></a>
+                      <a class="proof-action proof-action-secondary" href="#projects"><span>К другим проектам</span><svg class="proof-action-arrow proof-action-arrow-down" viewBox="0 0 20 26" aria-hidden="true"><path d="M10 2Q9.5 12 10 23M3 16L10 23L17 16M11 3L10.8 21"/></svg></a>
+                    </div>
+                  </article>
+                </div>
               </div>
-            </article>
+            </div>
+          </div>
+          <div class="hero-message">
+            <p class="hero-copy">Создаём сервисы под ваши задачи. Автоматизируем работу с заявками и документами, связываем CRM, таблицы и другие системы.</p>
+            <p class="hero-outcome"><span>Меньше времени на рутину.</span><span>Больше — на жизнь и развитие.</span></p>
+            <ul class="benefits" aria-label="Как мы работаем">
+              <li><svg class="sketch-art" viewBox="0 0 44 44" aria-hidden="true"><use class="pencil-echo" href="#benefit-launch" transform="translate(.5 .4)"/><g id="benefit-launch"><path d="M14 26C17 18 25 8 38 6c-1 13-9 22-17 25Zm4-8h-6l-6 9 8-1m15 1v6l-9 6 1-8"/><circle cx="28" cy="16" r="3.5"/><path class="sketch-accent" d="M13 30q-7-1-7 8 8 0 9-6M3 33l-1 3m9 5-3 1"/></g></svg><span>Быстрый <br>старт</span></li>
+              <li><svg class="sketch-art" viewBox="0 0 44 44" aria-hidden="true"><use class="pencil-echo" href="#benefit-process" transform="translate(.5 .4)"/><g id="benefit-process"><path d="M4 5h11v9H4Zm24 13h11v9H28ZM4 31h11v9H4ZM16 9h12q6 0 6 6m-3-3 3 4 3-4M27 23H16q-6 0-6 5m-3-3 3 4 3-4"/><path class="sketch-accent" d="m7 9 2 2 3-4m19 16 2 2 3-4m-29 16 2 2 3-4"/></g></svg><span>Понятный <br>процесс</span></li>
+              <li><svg class="sketch-art" viewBox="0 0 44 44" aria-hidden="true"><use class="pencil-echo" href="#benefit-dialogue" transform="translate(.5 .4)"/><g id="benefit-dialogue"><path d="M8 6h20q4 0 4 4v10q0 4-4 4H17l-8 6v-6H8q-4 0-4-4V10q0-4 4-4Zm27 11h1q4 0 4 4v9q0 4-4 4h-2v5l-7-5h-5q-4 0-4-4v-2"/><path class="sketch-accent" d="M11 13h14m-14 5h9m7 11h6"/></g></svg><span>Честная <br>коммуникация</span></li>
+              <li><svg class="sketch-art" viewBox="0 0 44 44" aria-hidden="true"><use class="pencil-echo" href="#benefit-result" transform="translate(.5 .4)"/><g id="benefit-result"><path d="M7 7q15-1 30 0 3 0 3 3v23q0 3-3 3H7q-3 0-3-3V10q0-3 3-3Zm-3 8h36"/><circle cx="9" cy="11" r=".8"/><circle cx="13" cy="11" r=".8"/><circle cx="17" cy="11" r=".8"/><path class="sketch-accent" d="m13 25 7 7 12-13"/></g></svg><span>Реальный <br>результат</span></li>
+            </ul>
+            <div class="hero-actions">
+              <a class="button primary" href="#contact">Обсудить задачу <svg class="pencil-arrow" viewBox="0 0 36 20" aria-hidden="true"><use href="#arrow-right"/></svg></a>
+              <a class="button secondary" href="#projects">Посмотреть проекты</a>
+            </div>
+            <p class="hero-helper">Для первого разговора достаточно<br>описать задачу своими словами.</p>
           </div>
         </div>
       </section>

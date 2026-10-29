@@ -38,13 +38,58 @@ const { chromium } = require('playwright');
       assert.ok(await image.evaluate(img => img.naturalHeight / img.naturalWidth > 1.7), `${key}: preview must be a narrow vertical window`);
       assert.ok((await image.getAttribute('alt')).includes('иллюстрация'));
       assert.ok((await image.getAttribute('src')).endsWith(`/${key}-window.webp`));
-      for (const width of [320, 390, 600, 720, 844, 1280, 1440]) {
-        await page.setViewportSize({ width, height: 1000 });
+      const viewports = [
+        [320, 1000], [390, 844], [600, 1000], [720, 1000], [844, 900], [844, 572],
+        [1024, 768], [1099, 572], [1100, 720], [1165, 572], [1200, 650], [1280, 450], [1280, 500], [1280, 650], [1280, 720], [1366, 650],
+        [1440, 768], [1536, 864], [1920, 960],
+      ];
+      for (const [width, height] of viewports) {
+        await page.setViewportSize({ width, height });
+        const expectedArt = width < 1100 ? 'hero-laptop-mobile.webp' : 'hero-composition.webp';
+        await page.waitForFunction(name => {
+          const art = document.querySelector('.approved-art img');
+          return art.complete && art.naturalWidth > 0 && new URL(art.currentSrc).pathname.endsWith(name);
+        }, expectedArt);
+        await page.locator('.approved-art img').evaluate(img => img.decode());
+        // Measure after the resized viewport has reached the next painted layout.
+        await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+        await page.evaluate(() => window.scrollTo(0, 0));
         const layout = await page.evaluate(() => {
           const card = document.querySelector('.proof-card').getBoundingClientRect();
-          const elements = [...document.querySelectorAll('.proof-thumb, .proof-copy h2, .proof-copy p, .proof-actions a')];
+          const screen = document.querySelector('.hero-screen').getBoundingClientRect();
+          const group = document.querySelector('.proof-group').getBoundingClientRect();
+          const art = document.querySelector('.approved-art').getBoundingClientRect();
+          const title = document.querySelector('.hero-title').getBoundingClientRect();
+          const message = document.querySelector('.hero-message').getBoundingClientRect();
+          const process = document.querySelector('.hero-process-mobile').getBoundingClientRect();
+          const device = document.querySelector('.hero-art-window').getBoundingClientRect();
+          const copy = document.querySelector('.hero-copy').getBoundingClientRect();
+          const outcome = document.querySelector('.hero-outcome').getBoundingClientRect();
+          const benefits = document.querySelector('.benefits').getBoundingClientRect();
+          const label = document.querySelector('.proof-label').getBoundingClientRect();
+          const hero = document.querySelector('.hero-stage').getBoundingClientRect();
+          const elements = [...document.querySelectorAll('.proof-thumb, .proof-copy h2, .proof-copy p, .proof-actions a')]
+            .filter(el => getComputedStyle(el).display !== 'none');
           return {
             overflow: document.documentElement.scrollWidth - innerWidth,
+            firstScreen: scrollY === 0 && card.top >= 0 && card.bottom <= innerHeight - 10 &&
+              label.bottom <= innerHeight - 10 &&
+              document.querySelector('.hero-helper').getBoundingClientRect().bottom <= innerHeight - 10,
+            insideLaptop: group.left >= screen.left - 1 && group.top >= screen.top - 1 &&
+              group.right <= screen.right + 1 && group.bottom <= screen.bottom + 1 &&
+              card.left >= screen.left && card.right <= screen.right + 1 &&
+              card.top >= screen.top && card.bottom <= screen.bottom + 1,
+            desktopPlacement: title.right <= art.left + art.width * .175 && message.right < screen.left,
+            mobileSequence: title.bottom <= process.top + 1 && process.bottom <= device.top + 1 &&
+              art.bottom <= label.top - 4 && label.bottom <= device.bottom + 1 &&
+              device.bottom <= copy.top + 1 && outcome.bottom <= benefits.top + 1,
+            mobileFocusOrder: card.bottom <= copy.top && !!(document.querySelector('.proof-action-primary')
+              .compareDocumentPosition(document.querySelector('.hero-actions .primary')) & Node.DOCUMENT_POSITION_FOLLOWING),
+            labelOutside: label.right <= screen.left - 4 || label.bottom <= screen.top - 4 || label.top >= art.bottom + 4,
+            labelBelowRight: label.top >= art.bottom + 3 && label.right <= device.right + 1 &&
+              label.left + label.width / 2 >= screen.left + screen.width / 2,
+            contentInsideHero: message.bottom <= hero.bottom - 10 && card.bottom <= hero.bottom - 10,
+            touchTargets: [...document.querySelectorAll('.proof-actions a')].every(el => el.getBoundingClientRect().height >= 44),
             inside: elements.every(el => {
               const r = el.getBoundingClientRect();
               return r.width > 0 && r.height > 0 && r.left >= card.left && r.right <= card.right + 1
@@ -52,8 +97,17 @@ const { chromium } = require('playwright');
             }),
           };
         });
-        assert.ok(layout.overflow <= 1 && layout.inside, `${key}/${width}: clipped or overflowing hero`);
-        results.push({ key, width, ...layout });
+        assert.ok(layout.overflow <= 1 && layout.inside && layout.insideLaptop && layout.touchTargets && layout.labelOutside && layout.labelBelowRight && layout.contentInsideHero,
+          `${key}/${width}: clipped, overflowing or undersized laptop card: ${JSON.stringify(layout)}`);
+        if (width < 1100) assert.ok(layout.mobileFocusOrder && layout.mobileSequence,
+          `${key}/${width}: title/process/laptop/text/icons order must match keyboard order: ${JSON.stringify(layout)}`);
+        if (width >= 1100) assert.ok(layout.desktopPlacement, `${key}/${width}: text must stay to the left of napkin/laptop`);
+        if (width >= 1100 && height >= 572) {
+          assert.ok(layout.firstScreen, `${key}/${width}x${height}: example and actions must fit in the first screen`);
+        }
+        results.push({ key, width, height, ...layout });
+        if (index === 2 && width >= 1100) await page.screenshot({ path: path.join(output, `layout-${width}x${height}.png`) });
+        if (index === 2 && [320, 390, 844].includes(width)) await page.locator('.hero-stage').screenshot({ path: path.join(output, `hero-${width}.png`) });
         if ([390, 844, 1440].includes(width)) await page.locator('.proof-group').screenshot({ path: path.join(output, `${key}-${width}.png`) });
       }
       if (href === '#projects') {

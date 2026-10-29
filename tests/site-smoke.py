@@ -36,7 +36,7 @@ for name in page.files:
     if resource.path == "styles.css":
         version = sha256((root / resource.path).read_text(encoding="utf-8").encode("utf-8")).hexdigest()[:12]
         assert parse_qs(resource.query).get("v") == [version], "update styles.css?v= to the first 12 SHA256 characters"
-for css in (root / "styles.css", root / "projects.css", root / "about.css", root / "assets/fonts.css"):
+for css in (root / "styles.css", root / "hero.css", root / "projects.css", root / "about.css", root / "assets/fonts.css"):
     for reference in re.findall(r"""url\((?:'[^']*'|"[^"]*"|[^)]*)\)""", css.read_text(encoding="utf-8")):
         resource = reference[4:-1].strip("'\" ")
         if not resource.startswith(("data:", "#")):
@@ -52,8 +52,9 @@ assert 'id="project-type"' not in html and 'id="project-disclosure"' not in html
 assert 'id="project-details"' in html and '<details' not in html, "full project descriptions must be visible"
 assert 'id="project-dialog"' not in html, "old project modal must be removed"
 assert 'Это прототип' not in html, "prototype contact must not be published"
-for resource in ("projects.css", "projects.js", "app.js", "about.css"):
-    version = sha256((root / resource).read_bytes()).hexdigest()[:12]
+for resource in ("projects.css", "projects.js", "app.js", "about.css", "hero.css"):
+    content = (root / resource).read_text(encoding="utf-8").encode("utf-8") if resource == "hero.css" else (root / resource).read_bytes()
+    version = sha256(content).hexdigest()[:12]
     assert f'{resource}?v={version}' in html, f"update cached resource version: {resource}"
 for filename in re.findall(r"\['([^']+\.png)',", (root / "projects.js").read_text(encoding="utf-8")):
     assert (root / "assets/projects" / filename).is_file(), f"missing gallery image: {filename}"
